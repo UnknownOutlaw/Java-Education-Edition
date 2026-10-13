@@ -15,7 +15,7 @@
 
 ---
 
-The chemistry and classroom content from Minecraft: Education Edition is some of the coolest stuff Minecraft has ever had, but it's been stuck on Bedrock behind a school login. This mod brings it over to Java on Fabric, kept as close to the original as possible, down to the creative menu order.
+The chemistry and classroom content from Minecraft: Education Edition is some of the coolest stuff Minecraft has ever had, but it's been stuck on Bedrock, or behind a school login. This mod brings it over to Java on Fabric, kept as close to the original as possible, down to the creative menu order.
 
 ## Features
 
