@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "I": "minecraft:iron_ingot",
+    "G": "minecraft:glass",
+    "R": "minecraft:redstone",
+    "A": "minecraft:amethyst_shard"
+  },
+  "pattern": [
+    "IGI",
+    "RAR",
+    "III"
+  ],
+  "result": {
+    "count": 1,
+    "id": "edu:element_constructor"
+  }
+}

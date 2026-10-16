@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "W": "#minecraft:planks",
+    "P": "minecraft:paper",
+    "F": "minecraft:flint",
+    "R": "minecraft:redstone",
+    "C": "minecraft:copper_ingot"
+  },
+  "pattern": [
+    "WPW",
+    "FRF",
+    "CCC"
+  ],
+  "result": {
+    "count": 1,
+    "id": "edu:camera"
+  }
+}

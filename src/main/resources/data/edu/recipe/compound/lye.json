@@ -1,0 +1,17 @@
+{
+  "type": "edu:compound",
+  "ingredients": [
+    {
+      "id": "edu:element_11"
+    },
+    {
+      "id": "edu:element_8"
+    },
+    {
+      "id": "edu:element_1"
+    }
+  ],
+  "result": {
+    "id": "edu:lye"
+  }
+}

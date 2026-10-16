@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "G": "minecraft:glass",
+    "I": "minecraft:iron_ingot",
+    "C": "minecraft:cauldron",
+    "R": "minecraft:redstone"
+  },
+  "pattern": [
+    "GGG",
+    "ICI",
+    "IRI"
+  ],
+  "result": {
+    "count": 1,
+    "id": "edu:compound_creator"
+  }
+}

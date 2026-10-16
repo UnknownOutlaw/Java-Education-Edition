@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "P": "edu:polyethylene",
+    "H": "edu:hydrogen_peroxide",
+    "D": [
+      "minecraft:brown_dye",
+      "minecraft:cocoa_beans"
+    ],
+    "L": "edu:luminol"
+  },
+  "pattern": [
+    "PHP",
+    "PDP",
+    "PLP"
+  ],
+  "result": {
+    "count": 1,
+    "id": "edu:glow_stick_brown"
+  },
+  "group": "edu:glow_stick"
+}

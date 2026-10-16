@@ -1,0 +1,14 @@
+{
+  "type": "edu:compound",
+  "ingredients": [
+    {
+      "id": "edu:element_26"
+    },
+    {
+      "id": "edu:element_16"
+    }
+  ],
+  "result": {
+    "id": "edu:iron_sulfide"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_transmute",
+  "category": "equipment",
+  "group": "edu:bleach_leather",
+  "input": "minecraft:leather_chestplate",
+  "material": "edu:bleach",
+  "result": {
+    "id": "minecraft:leather_chestplate",
+    "components": {
+      "minecraft:dyed_color": 16383998
+    }
+  }
+}

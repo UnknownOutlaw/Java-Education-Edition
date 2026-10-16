@@ -1,0 +1,18 @@
+{
+  "type": "edu:compound",
+  "ingredients": [
+    {
+      "id": "edu:element_26"
+    },
+    {
+      "id": "edu:element_16"
+    },
+    {
+      "id": "edu:element_8",
+      "count": 4
+    }
+  ],
+  "result": {
+    "id": "minecraft:ink_sac"
+  }
+}
