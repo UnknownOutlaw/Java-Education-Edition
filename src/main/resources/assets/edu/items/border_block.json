@@ -1,0 +1,6 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "edu:block/border_block_inventory"
+  }
+}
