@@ -97,6 +97,27 @@ You don't need JEI to play.
 | Java | 21 or newer |
 | JEI | optional |
 
+## Building from source
+You need **JDK 25** (Minecraft 26.1 runs on Java 25). Then, from the project folder:
+
+```sh
+./gradlew build        # Windows: gradlew.bat build
+```
+
+The jars end up in `build/libs`:
+- `education-edition-<version>+26.1.2.jar` is the mod without the JEI plugin.
+- `education-edition-<version>+26.1.2-jei.jar` is the same mod with the JEI plugin.
+
+The mod's version number is set in `gradle.properties`.
+
+### Project layout
+| Path | What's there |
+| --- | --- |
+| `src/main/java/edu/chemistry` | The mod's code: blocks, items, entities, screens and mixins |
+| `src/main/java/edu/chemistry/compat/jei` | The JEI plugin (left out of the plain jar) |
+| `src/main/resources/assets/edu` | Textures, models, sounds, language and the guide book |
+| `src/main/resources/data/edu` | Recipes, loot tables, tags, advancements, villager trades and the village labs |
+
 ## License
 The mod's code is licensed under the [MIT License](LICENSE).
 

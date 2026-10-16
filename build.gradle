@@ -1,0 +1,88 @@
+plugins {
+    id 'net.fabricmc.fabric-loom' version "${loom_version}"
+}
+
+version = "${project.mod_version}+${project.minecraft_version}"
+group = project.maven_group
+
+base {
+    archivesName = project.archives_base_name
+}
+
+repositories {
+    // JEI
+    maven {
+        name = 'BlameJared'
+        url = 'https://maven.blamejared.com/'
+    }
+    maven {
+        name = 'ModMaven'
+        url = 'https://modmaven.dev/'
+    }
+}
+
+dependencies {
+    minecraft "com.mojang:minecraft:${project.minecraft_version}"
+    implementation "net.fabricmc:fabric-loader:${project.loader_version}"
+
+    // only the JEI plugin (edu.chemistry.compat.jei) uses JEI, and only when JEI is installed
+    compileOnly "mezz.jei:jei-${project.minecraft_version}-common-api:${project.jei_version}"
+    compileOnly "mezz.jei:jei-${project.minecraft_version}-fabric-api:${project.jei_version}"
+}
+
+java {
+    // Minecraft 26.1 runs on Java 25; the mod itself is compiled for Java 21
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(25)
+    }
+    withSourcesJar()
+}
+
+tasks.withType(JavaCompile).configureEach {
+    it.options.encoding = 'UTF-8'
+    it.options.release = 21
+}
+
+processResources {
+    inputs.property 'version', project.version
+    filesMatching('fabric.mod.json') {
+        expand 'version': project.version
+    }
+}
+
+// Two jars, like the releases:
+//   education-edition-<version>-jei.jar  the full mod, with the JEI plugin
+//   education-edition-<version>.jar      the same mod without the JEI plugin
+jar {
+    archiveClassifier = 'jei'
+}
+
+def noJeiModJson = tasks.register('noJeiModJson') {
+    def out = layout.buildDirectory.file('nojei/fabric.mod.json')
+    dependsOn tasks.named('processResources')
+    inputs.files(tasks.named('processResources'))
+    outputs.file(out)
+    doLast {
+        def source = new File(tasks.processResources.destinationDir, 'fabric.mod.json')
+        def json = new groovy.json.JsonSlurper().parse(source)
+        json.entrypoints.remove('jei_mod_plugin')
+        json.remove('suggests')
+        def file = out.get().asFile
+        file.parentFile.mkdirs()
+        file.text = groovy.json.JsonOutput.prettyPrint(groovy.json.JsonOutput.toJson(json))
+    }
+}
+
+def noJeiJar = tasks.register('noJeiJar', Jar) {
+    dependsOn noJeiModJson, tasks.named('classes')
+    archiveClassifier = ''
+    from(sourceSets.main.output) {
+        exclude 'edu/chemistry/compat/jei/**'
+        exclude 'fabric.mod.json'
+    }
+    from(layout.buildDirectory.dir('nojei'))
+}
+
+tasks.named('assemble') {
+    dependsOn noJeiJar
+}
