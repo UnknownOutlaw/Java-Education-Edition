@@ -1,0 +1,2038 @@
+{
+ "chapters": [
+  {
+   "label": "Getting Started",
+   "page": 2,
+   "icon": "edu:guide_book",
+   "color": 4281240451
+  },
+  {
+   "label": "Lab Equipment",
+   "page": 7,
+   "icon": "edu:element_constructor",
+   "color": 4281298869
+  },
+  {
+   "label": "Elements",
+   "page": 16,
+   "icon": "edu:element_1",
+   "color": 4282292811
+  },
+  {
+   "label": "Compounds",
+   "page": 22,
+   "icon": "edu:water",
+   "color": 4286470082
+  },
+  {
+   "label": "Lab Table",
+   "page": 59,
+   "icon": "edu:lab_table",
+   "color": 4292444715
+  },
+  {
+   "label": "Products",
+   "page": 70,
+   "icon": "edu:balloon_red",
+   "color": 4290787627
+  },
+  {
+   "label": "Classroom",
+   "page": 84,
+   "icon": "edu:slate",
+   "color": 4287458890
+  }
+ ],
+ "pages": [
+  {
+   "title": "Chemistry Guide",
+   "text": "Everything Education Edition brings to Java, one page at a time.",
+   "kind": "cover",
+   "icon": "edu:guide_book",
+   "section": -1
+  },
+  {
+   "title": "Contents",
+   "kind": "contents",
+   "section": -1,
+   "contents": [
+    {
+     "label": "Getting Started",
+     "page": 2
+    },
+    {
+     "label": "Lab Equipment",
+     "page": 7
+    },
+    {
+     "label": "Elements",
+     "page": 16
+    },
+    {
+     "label": "Compounds",
+     "page": 22
+    },
+    {
+     "label": "Lab Table",
+     "page": 59
+    },
+    {
+     "label": "Products",
+     "page": 70
+    },
+    {
+     "label": "Classroom",
+     "page": 84
+    }
+   ]
+  },
+  {
+   "title": "Getting Started",
+   "text": "Welcome! This book has every recipe in the mod, and how to use the tables, chalkboards, NPCs and cameras. The bookmarks on the right jump to each chapter.",
+   "chapter": true,
+   "icon": "edu:guide_book",
+   "section": 0
+  },
+  {
+   "title": "Turning It On",
+   "text": "Education Edition is a world setting: turn it on in the Game tab when you create a world.\n\nFor an existing world:\n/gamerule edu:education_features true\n\nWith it off, nothing from the mod works.",
+   "section": 0
+  },
+  {
+   "title": "Using This Book",
+   "text": "Hover over any item to see its name. The number on an item is how many you need.\n\nTurn pages with the arrows, the scroll wheel or Page Up / Page Down. Home goes back to the Contents.\n\nThe book opens where you left off.",
+   "section": 0
+  },
+  {
+   "title": "The Creative Tab",
+   "text": "Everything is in the Education Edition creative tab. The side tabs split it into Education, Lab Equipment, Elements, Compounds and Products.",
+   "section": 0
+  },
+  {
+   "title": "This Book",
+   "station": "minecraft:crafting_table",
+   "inputs": [
+    {
+     "id": "minecraft:book"
+    },
+    {
+     "id": "minecraft:glass_bottle"
+    }
+   ],
+   "outputs": [
+    {
+     "id": "edu:guide_book"
+    }
+   ],
+   "grid": true,
+   "text": "A book and a glass bottle. Unlocked by picking up a book.",
+   "section": 0
+  },
+  {
+   "title": "Lab Equipment",
+   "text": "Four tables do the chemistry: the Element Constructor, the Compound Creator, the Lab Table and the Material Reducer.",
+   "chapter": true,
+   "icon": "edu:element_constructor",
+   "section": 1
+  },
+  {
+   "title": "Element Constructor",
+   "station": "minecraft:crafting_table",
+   "inputs": [
+    {
+     "id": "minecraft:iron_ingot"
+    },
+    {
+     "id": "minecraft:glass"
+    },
+    {
+     "id": "minecraft:iron_ingot"
+    },
+    {
+     "id": "minecraft:redstone"
+    },
+    {
+     "id": "minecraft:amethyst_shard"
+    },
+    {
+     "id": "minecraft:redstone"
+    },
+    {
+     "id": "minecraft:iron_ingot"
+    },
+    {
+     "id": "minecraft:iron_ingot"
+    },
+    {
+     "id": "minecraft:iron_ingot"
+    }
+   ],
+   "outputs": [
+    {
+     "id": "edu:element_constructor"
+    }
+   ],
+   "grid": true,
+   "text": "Makes any of the 118 elements. Unlocked by amethyst or redstone.",
+   "section": 1
+  },
+  {
+   "title": "Using the Constructor",
+   "text": "Drag the three sliders to set the protons, electrons and neutrons. The protons decide the element, and the picture shows the atom as you build it.\n\nWhen it makes a real element, take it from the output slot.",
+   "section": 1
+  },
+  {
+   "title": "Compound Creator",
+   "station": "minecraft:crafting_table",
+   "inputs": [
+    {
+     "id": "minecraft:glass"
+    },
+    {
+     "id": "minecraft:glass"
+    },
+    {
+     "id": "minecraft:glass"
+    },
+    {
+     "id": "minecraft:iron_ingot"
+    },
+    {
+     "id": "minecraft:cauldron"
+    },
+    {
+     "id": "minecraft:iron_ingot"
+    },
+    {
+     "id": "minecraft:iron_ingot"
+    },
+    {
+     "id": "minecraft:redstone"
+    },
+    {
+     "id": "minecraft:iron_ingot"
+    }
+   ],
+   "outputs": [
+    {
+     "id": "edu:compound_creator"
+    }
+   ],
+   "grid": true,
+   "text": "Joins elements into compounds. Unlocked by a cauldron or redstone.",
+   "section": 1
+  },
+  {
+   "title": "Using the Creator",
+   "text": "Put the elements in the grid in the right amounts. If they make a compound, it appears in the output slot.\n\nThe recipe book button shows every compound you have unlocked and can fill the grid for you.",
+   "section": 1
+  },
+  {
+   "title": "Lab Table",
+   "station": "minecraft:crafting_table",
+   "inputs": [
+    {
+     "id": "minecraft:glass_bottle"
+    },
+    {
+     "id": "minecraft:glass_bottle"
+    },
+    {
+     "id": "minecraft:glass_bottle"
+    },
+    {
+     "id": "minecraft:iron_ingot"
+    },
+    {
+     "id": "minecraft:iron_ingot"
+    },
+    {
+     "id": "minecraft:iron_ingot"
+    },
+    {
+     "id": "minecraft:iron_ingot"
+    },
+    null,
+    {
+     "id": "minecraft:iron_ingot"
+    }
+   ],
+   "outputs": [
+    {
+     "id": "edu:lab_table"
+    }
+   ],
+   "grid": true,
+   "text": "Reacts elements and compounds. Unlocked by a glass bottle.",
+   "section": 1
+  },
+  {
+   "title": "Using the Lab Table",
+   "text": "Put the ingredients on the table and press Combine. A known reaction makes its product; anything else fizzles, smokes or bangs (harmlessly) and leaves Garbage.",
+   "section": 1
+  },
+  {
+   "title": "Material Reducer",
+   "text": "Breaks blocks and compounds down into their elements. It has no crafting recipe: find it in the Creative inventory, or buy one from a Master Chemist.",
+   "show": [
+    {
+     "id": "edu:material_reducer"
+    }
+   ],
+   "section": 1
+  },
+  {
+   "title": "Chemist Villager",
+   "text": "A jobless villager who finds a Lab Table becomes a Chemist. Look for their labs in villages. They sell elements and products; Masters sell the Material Reducer.",
+   "show": [
+    {
+     "id": "edu:lab_table"
+    }
+   ],
+   "section": 1
+  },
+  {
+   "title": "Elements",
+   "text": "Each element has its own number of protons: its atomic number. Make them in the Element Constructor, or get them from blocks with the Material Reducer.",
+   "chapter": true,
+   "icon": "edu:element_1",
+   "section": 2
+  },
+  {
+   "title": "Making Carbon",
+   "subtitle": "6 protons, 6 neutrons, 6 electrons",
+   "station": "edu:element_constructor",
+   "inputs": [],
+   "outputs": [
+    {
+     "id": "edu:element_6"
+    }
+   ],
+   "text": "Set the sliders to these numbers, then take the Carbon. The protons pick the element.",
+   "section": 2
+  },
+  {
+   "title": "Making Oxygen",
+   "subtitle": "8 protons, 8 neutrons, 8 electrons",
+   "station": "edu:element_constructor",
+   "inputs": [],
+   "outputs": [
+    {
+     "id": "edu:element_8"
+    }
+   ],
+   "text": "Lots of compounds need oxygen, so make plenty.",
+   "section": 2
+  },
+  {
+   "title": "Isotopes",
+   "text": "Change the number of neutrons and you get an isotope: the same element with a different mass. Carbon with 8 neutrons is Carbon-14.\n\nThe number of electrons should match the protons to make a neutral atom.",
+   "section": 2
+  },
+  {
+   "title": "Reducing Sand",
+   "station": "edu:material_reducer",
+   "inputs": [
+    {
+     "id": "minecraft:sand"
+    }
+   ],
+   "outputs": [
+    {
+     "id": "edu:element_14",
+     "count": 33
+    },
+    {
+     "id": "edu:element_8",
+     "count": 64
+    },
+    {
+     "id": "edu:element_8",
+     "count": 3
+    }
+   ],
+   "text": "Most natural blocks break down into the elements they're made of.",
+   "section": 2
+  },
+  {
+   "title": "Reducing Dirt",
+   "station": "edu:material_reducer",
+   "inputs": [
+    {
+     "id": "minecraft:dirt"
+    }
+   ],
+   "outputs": [
+    {
+     "id": "edu:element_14",
+     "count": 21
+    },
+    {
+     "id": "edu:element_20",
+     "count": 8
+    },
+    {
+     "id": "edu:element_15",
+     "count": 3
+    },
+    {
+     "id": "edu:element_7",
+     "count": 3
+    },
+    {
+     "id": "edu:element_26",
+     "count": 13
+    },
+    {
+     "id": "edu:element_12",
+     "count": 6
+    },
+    {
+     "id": "edu:element_30",
+     "count": 2
+    },
+    {
+     "id": "edu:element_29",
+     "count": 2
+    },
+    {
+     "id": "edu:element_8",
+     "count": 42
+    }
+   ],
+   "text": "Gives the elements the block is made of.",
+   "section": 2
+  },
+  {
+   "title": "Compounds",
+   "text": "Put the right elements, in the right amounts, into the Compound Creator. Each page shows the formula and what the compound is for.",
+   "chapter": true,
+   "icon": "edu:water",
+   "section": 3
+  },
+  {
+   "title": "Salt",
+   "subtitle": "NaCl",
+   "station": "edu:compound_creator",
+   "inputs": [
+    {
+     "id": "edu:element_11"
+    },
+    {
+     "id": "edu:element_17"
+    }
+   ],
+   "outputs": [
+    {
+     "id": "edu:salt"
+    }
+   ],
+   "text": "Made from 1 Sodium and 1 Chlorine.\nUsed for: Heat Block, Magnesium Salts.",
+   "section": 3
+  },
+  {
+   "title": "Sodium Oxide",
+   "subtitle": "Na₂O",
+   "station": "edu:compound_creator",
+   "inputs": [
+    {
+     "id": "edu:element_11",
+     "count": 2
+    },
+    {
+     "id": "edu:element_8"
+    }
+   ],
+   "outputs": [
+    {
+     "id": "edu:sodium_oxide"
+    }
+   ],
+   "text": "Made from 2 Sodium and 1 Oxygen.",
+   "section": 3
+  },
+  {
+   "title": "Lye",
+   "subtitle": "NaOH",
+   "station": "edu:compound_creator",
+   "inputs": [
+    {
+     "id": "edu:element_11"
+    },
+    {
+     "id": "edu:element_8"
+    },
+    {
+     "id": "edu:element_1"
+    }
+   ],
+   "outputs": [
+    {
+     "id": "edu:lye"
+    }
+   ],
+   "text": "Made from 1 Sodium, 1 Oxygen and 1 Hydrogen.",
+   "section": 3
+  },
+  {
+   "title": "Magnesium Nitrate",
+   "subtitle": "Mg(NO₃)₂",
+   "station": "edu:compound_creator",
+   "inputs": [
+    {
+     "id": "edu:element_12"
+    },
+    {
+     "id": "edu:element_7",
+     "count": 2
+    },
+    {
+     "id": "edu:element_8",
+     "count": 6
+    }
+   ],
+   "outputs": [
+    {
+     "id": "edu:magnesium_nitrate"
+    }
+   ],
+   "text": "Made from 1 Magnesium, 2 Nitrogen and 6 Oxygen.",
+   "section": 3
+  },
+  {
+   "title": "Iron Sulfide",
+   "subtitle": "FeS",
+   "station": "edu:compound_creator",
+   "inputs": [
+    {
+     "id": "edu:element_26"
+    },
+    {
+     "id": "edu:element_16"
+    }
+   ],
+   "outputs": [
+    {
+     "id": "edu:iron_sulfide"
+    }
+   ],
+   "text": "Made from 1 Iron and 1 Sulfur.",
+   "section": 3
+  },
+  {
+   "title": "Lithium Hydride",
+   "subtitle": "LiH",
+   "station": "edu:compound_creator",
+   "inputs": [
+    {
+     "id": "edu:element_3"
+    },
+    {
+     "id": "edu:element_1"
+    }
+   ],
+   "outputs": [
+    {
+     "id": "edu:lithium_hydride"
+    }
+   ],
+   "text": "Made from 1 Lithium and 1 Hydrogen.",
+   "section": 3
+  },
+  {
+   "title": "Sodium Hydride",
+   "subtitle": "NaH",
+   "station": "edu:compound_creator",
+   "inputs": [
+    {
+     "id": "edu:element_11"
+    },
+    {
+     "id": "edu:element_1"
+    }
+   ],
+   "outputs": [
+    {
+     "id": "edu:sodium_hydride"
+    }
+   ],
+   "text": "Made from 1 Sodium and 1 Hydrogen.",
+   "section": 3
+  },
+  {
+   "title": "Calcium Bromide",
+   "subtitle": "CaBr₂",
+   "station": "edu:compound_creator",
+   "inputs": [
+    {
+     "id": "edu:element_20"
+    },
+    {
+     "id": "edu:element_35",
+     "count": 2
+    }
+   ],
+   "outputs": [
+    {
+     "id": "edu:calcium_bromide"
+    }
+   ],
+   "text": "Made from 1 Calcium and 2 Bromine.",
+   "section": 3
+  },
+  {
+   "title": "Magnesium Oxide",
+   "subtitle": "MgO",
+   "station": "edu:compound_creator",
+   "inputs": [
+    {
+     "id": "edu:element_12"
+    },
+    {
+     "id": "edu:element_8"
+    }
+   ],
+   "outputs": [
+    {
+     "id": "edu:magnesium_oxide"
+    }
+   ],
+   "text": "Made from 1 Magnesium and 1 Oxygen.",
+   "section": 3
+  },
+  {
+   "title": "Sodium Acetate",
+   "subtitle": "C₂H₃NaO₂",
+   "station": "edu:compound_creator",
+   "inputs": [
+    {
+     "id": "edu:element_6",
+     "count": 2
+    },
+    {
+     "id": "edu:element_1",
+     "count": 3
+    },
+    {
+     "id": "edu:element_11"
+    },
+    {
+     "id": "edu:element_8",
+     "count": 2
+    }
+   ],
+   "outputs": [
+    {
+     "id": "edu:sodium_acetate"
+    }
+   ],
+   "text": "Made from 2 Carbon, 3 Hydrogen, 1 Sodium and 2 Oxygen.\nUsed for: Ice Bomb.",
+   "section": 3
+  },
+  {
+   "title": "Luminol",
+   "subtitle": "C₈H₇N₃O₂",
+   "station": "edu:compound_creator",
+   "inputs": [
+    {
+     "id": "edu:element_6",
+     "count": 8
+    },
+    {
+     "id": "edu:element_1",
+     "count": 7
+    },
+    {
+     "id": "edu:element_7",
+     "count": 3
+    },
+    {
+     "id": "edu:element_8",
+     "count": 2
+    }
+   ],
+   "outputs": [
+    {
+     "id": "edu:luminol"
+    }
+   ],
+   "text": "Made from 8 Carbon, 7 Hydrogen, 3 Nitrogen and 2 Oxygen.\nUsed for: Glow Stick.",
+   "section": 3
+  },
+  {
+   "title": "Aluminum Oxide",
+   "subtitle": "Al₂O₃",
+   "station": "edu:compound_creator",
+   "inputs": [
+    {
+     "id": "edu:element_13",
+     "count": 2
+    },
+    {
+     "id": "edu:element_8",
+     "count": 3
+    }
+   ],
+   "outputs": [
+    {
+     "id": "edu:aluminum_oxide"
+    }
+   ],
+   "text": "Made from 2 Aluminum and 3 Oxygen.\nUsed for: all Hardened Glass.",
+   "section": 3
+  },
+  {
+   "title": "Boron Trioxide",
+   "subtitle": "B₂O₃",
+   "station": "edu:compound_creator",
+   "inputs": [
+    {
+     "id": "edu:element_5",
+     "count": 2
+    },
+    {
+     "id": "edu:element_8",
+     "count": 3
+    }
+   ],
+   "outputs": [
+    {
+     "id": "edu:boron_trioxide"
+    }
+   ],
+   "text": "Made from 2 Boron and 3 Oxygen.\nUsed for: all Hardened Glass.",
+   "section": 3
+  },
+  {
+   "title": "Soap",
+   "subtitle": "C₁₈H₃₅NaO₂",
+   "station": "edu:compound_creator",
+   "inputs": [
+    {
+     "id": "edu:element_6",
+     "count": 18
+    },
+    {
+     "id": "edu:element_1",
+     "count": 35
+    },
+    {
+     "id": "edu:element_11"
+    },
+    {
+     "id": "edu:element_8",
+     "count": 2
+    }
+   ],
+   "outputs": [
+    {
+     "id": "edu:soap"
+    }
+   ],
+   "text": "Made from 18 Carbon, 35 Hydrogen, 1 Sodium and 2 Oxygen.\nUsed for: Elephant Toothpaste.",
+   "section": 3
+  },
+  {
+   "title": "Polyethylene",
+   "subtitle": "(C₂H₄)₅",
+   "station": "edu:compound_creator",
+   "inputs": [
+    {
+     "id": "edu:element_6",
+     "count": 10
+    },
+    {
+     "id": "edu:element_1",
+     "count": 20
+    }
+   ],
+   "outputs": [
+    {
+     "id": "edu:polyethylene"
+    }
+   ],
+   "text": "Made from 10 Carbon and 20 Hydrogen.\nUsed for: Glow Stick.",
+   "section": 3
+  },
+  {
+   "title": "Sulfate",
+   "subtitle": "SO₄",
+   "station": "edu:compound_creator",
+   "inputs": [
+    {
+     "id": "edu:element_16"
+    },
+    {
+     "id": "edu:element_8",
+     "count": 4
+    }
+   ],
+   "outputs": [
+    {
+     "id": "edu:sulfate"
+    }
+   ],
+   "text": "Made from 1 Sulfur and 4 Oxygen.",
+   "section": 3
+  },
+  {
+   "title": "Barium Sulfate",
+   "subtitle": "BaSO₄",
+   "station": "edu:compound_creator",
+   "inputs": [
+    {
+     "id": "edu:element_56"
+    },
+    {
+     "id": "edu:element_16"
+    },
+    {
+     "id": "edu:element_8",
+     "count": 4
+    }
+   ],
+   "outputs": [
+    {
+     "id": "edu:barium_sulfate"
+    }
+   ],
+   "text": "Made from 1 Barium, 1 Sulfur and 4 Oxygen.",
+   "section": 3
+  },
+  {
+   "title": "Potassium Chloride",
+   "subtitle": "KCl",
+   "station": "edu:compound_creator",
+   "inputs": [
+    {
+     "id": "edu:element_19"
+    },
+    {
+     "id": "edu:element_17"
+    }
+   ],
+   "outputs": [
+    {
+     "id": "edu:potassium_chloride"
+    }
+   ],
+   "text": "Made from 1 Potassium and 1 Chlorine.",
+   "section": 3
+  },
+  {
+   "title": "Mercuric Chloride",
+   "subtitle": "HgCl₂",
+   "station": "edu:compound_creator",
+   "inputs": [
+    {
+     "id": "edu:element_80"
+    },
+    {
+     "id": "edu:element_17",
+     "count": 2
+    }
+   ],
+   "outputs": [
+    {
+     "id": "edu:mercuric_chloride"
+    }
+   ],
+   "text": "Made from 1 Mercury and 2 Chlorine.\nUsed for: Colored Torch, Sparkler.",
+   "section": 3
+  },
+  {
+   "title": "Cerium Chloride",
+   "subtitle": "CeCl₃",
+   "station": "edu:compound_creator",
+   "inputs": [
+    {
+     "id": "edu:element_58"
+    },
+    {
+     "id": "edu:element_17",
+     "count": 3
+    }
+   ],
+   "outputs": [
+    {
+     "id": "edu:cerium_chloride"
+    }
+   ],
+   "text": "Made from 1 Cerium and 3 Chlorine.",
+   "section": 3
+  },
+  {
+   "title": "Tungsten Chloride",
+   "subtitle": "WCl₆",
+   "station": "edu:compound_creator",
+   "inputs": [
+    {
+     "id": "edu:element_74"
+    },
+    {
+     "id": "edu:element_17",
+     "count": 6
+    }
+   ],
+   "outputs": [
+    {
+     "id": "edu:tungsten_chloride"
+    }
+   ],
+   "text": "Made from 1 Tungsten and 6 Chlorine.",
+   "section": 3
+  },
+  {
+   "title": "Calcium Chloride",
+   "subtitle": "CaCl₂",
+   "station": "edu:compound_creator",
+   "inputs": [
+    {
+     "id": "edu:element_20"
+    },
+    {
+     "id": "edu:element_17",
+     "count": 2
+    }
+   ],
+   "outputs": [
+    {
+     "id": "edu:calcium_chloride"
+    }
+   ],
+   "text": "Made from 1 Calcium and 2 Chlorine.",
+   "section": 3
+  },
+  {
+   "title": "Water",
+   "subtitle": "H₂O",
+   "station": "edu:compound_creator",
+   "inputs": [
+    {
+     "id": "edu:element_1",
+     "count": 2
+    },
+    {
+     "id": "edu:element_8"
+    }
+   ],
+   "outputs": [
+    {
+     "id": "edu:water"
+    }
+   ],
+   "text": "Made from 2 Hydrogen and 1 Oxygen.\nUsed for: Bleach, Heat Block.",
+   "section": 3
+  },
+  {
+   "title": "Glue",
+   "subtitle": "C₅H₅NO₂",
+   "station": "edu:compound_creator",
+   "inputs": [
+    {
+     "id": "edu:element_6",
+     "count": 5
+    },
+    {
+     "id": "edu:element_1",
+     "count": 5
+    },
+    {
+     "id": "edu:element_7"
+    },
+    {
+     "id": "edu:element_8",
+     "count": 2
+    }
+   ],
+   "outputs": [
+    {
+     "id": "edu:glue"
+    }
+   ],
+   "text": "Made from 5 Carbon, 5 Hydrogen, 1 Nitrogen and 2 Oxygen.",
+   "section": 3
+  },
+  {
+   "title": "Hypochlorite",
+   "subtitle": "ClO",
+   "station": "edu:compound_creator",
+   "inputs": [
+    {
+     "id": "edu:element_17"
+    },
+    {
+     "id": "edu:element_8"
+    }
+   ],
+   "outputs": [
+    {
+     "id": "edu:hypochlorite"
+    }
+   ],
+   "text": "Made from 1 Chlorine and 1 Oxygen.",
+   "section": 3
+  },
+  {
+   "title": "Crude Oil",
+   "subtitle": "C₉H₂₀",
+   "station": "edu:compound_creator",
+   "inputs": [
+    {
+     "id": "edu:element_6",
+     "count": 9
+    },
+    {
+     "id": "edu:element_1",
+     "count": 20
+    }
+   ],
+   "outputs": [
+    {
+     "id": "edu:crude_oil"
+    }
+   ],
+   "text": "Made from 9 Carbon and 20 Hydrogen.",
+   "section": 3
+  },
+  {
+   "title": "Latex",
+   "subtitle": "C₅H₈",
+   "station": "edu:compound_creator",
+   "inputs": [
+    {
+     "id": "edu:element_6",
+     "count": 5
+    },
+    {
+     "id": "edu:element_1",
+     "count": 8
+    }
+   ],
+   "outputs": [
+    {
+     "id": "edu:latex"
+    }
+   ],
+   "text": "Made from 5 Carbon and 8 Hydrogen.\nUsed for: Balloon.",
+   "section": 3
+  },
+  {
+   "title": "Potassium Iodide",
+   "subtitle": "KI",
+   "station": "edu:compound_creator",
+   "inputs": [
+    {
+     "id": "edu:element_19"
+    },
+    {
+     "id": "edu:element_53"
+    }
+   ],
+   "outputs": [
+    {
+     "id": "edu:potassium_iodide"
+    }
+   ],
+   "text": "Made from 1 Potassium and 1 Iodine.\nUsed for: Elephant Toothpaste.",
+   "section": 3
+  },
+  {
+   "title": "Sodium Fluoride",
+   "subtitle": "NaF",
+   "station": "edu:compound_creator",
+   "inputs": [
+    {
+     "id": "edu:element_11"
+    },
+    {
+     "id": "edu:element_9"
+    }
+   ],
+   "outputs": [
+    {
+     "id": "edu:sodium_fluoride"
+    }
+   ],
+   "text": "Made from 1 Sodium and 1 Fluorine.",
+   "section": 3
+  },
+  {
+   "title": "Benzene",
+   "subtitle": "C₆H₆",
+   "station": "edu:compound_creator",
+   "inputs": [
+    {
+     "id": "edu:element_6",
+     "count": 6
+    },
+    {
+     "id": "edu:element_1",
+     "count": 6
+    }
+   ],
+   "outputs": [
+    {
+     "id": "edu:benzene"
+    }
+   ],
+   "text": "Made from 6 Carbon and 6 Hydrogen.",
+   "section": 3
+  },
+  {
+   "title": "Hydrogen Peroxide",
+   "subtitle": "H₂O₂",
+   "station": "edu:compound_creator",
+   "inputs": [
+    {
+     "id": "edu:element_1",
+     "count": 2
+    },
+    {
+     "id": "edu:element_8",
+     "count": 2
+    }
+   ],
+   "outputs": [
+    {
+     "id": "edu:hydrogen_peroxide"
+    }
+   ],
+   "text": "Made from 2 Hydrogen and 2 Oxygen.\nUsed for: Elephant Toothpaste, Glow Stick.",
+   "section": 3
+  },
+  {
+   "title": "Ammonia",
+   "subtitle": "NH₃",
+   "station": "edu:compound_creator",
+   "inputs": [
+    {
+     "id": "edu:element_7"
+    },
+    {
+     "id": "edu:element_1",
+     "count": 3
+    }
+   ],
+   "outputs": [
+    {
+     "id": "edu:ammonia"
+    }
+   ],
+   "text": "Made from 1 Nitrogen and 3 Hydrogen.\nUsed for: Super Fertilizer.",
+   "section": 3
+  },
+  {
+   "title": "Sodium Hypochlorite",
+   "subtitle": "NaClO",
+   "station": "edu:compound_creator",
+   "inputs": [
+    {
+     "id": "edu:element_11"
+    },
+    {
+     "id": "edu:element_17"
+    },
+    {
+     "id": "edu:element_8"
+    }
+   ],
+   "outputs": [
+    {
+     "id": "edu:sodium_hypochlorite"
+    }
+   ],
+   "text": "Made from 1 Sodium, 1 Chlorine and 1 Oxygen.\nUsed for: Bleach.",
+   "section": 3
+  },
+  {
+   "title": "Charcoal",
+   "subtitle": "C₇H₄O",
+   "station": "edu:compound_creator",
+   "inputs": [
+    {
+     "id": "edu:element_6",
+     "count": 7
+    },
+    {
+     "id": "edu:element_1",
+     "count": 4
+    },
+    {
+     "id": "edu:element_8"
+    }
+   ],
+   "outputs": [
+    {
+     "id": "minecraft:charcoal"
+    }
+   ],
+   "text": "A natural compound: the Compound Creator makes the everyday item.",
+   "section": 3
+  },
+  {
+   "title": "Ink Sac",
+   "subtitle": "FeSO₄",
+   "station": "edu:compound_creator",
+   "inputs": [
+    {
+     "id": "edu:element_26"
+    },
+    {
+     "id": "edu:element_16"
+    },
+    {
+     "id": "edu:element_8",
+     "count": 4
+    }
+   ],
+   "outputs": [
+    {
+     "id": "minecraft:ink_sac"
+    }
+   ],
+   "text": "A natural compound: the Compound Creator makes the everyday item.",
+   "section": 3
+  },
+  {
+   "title": "Sugar",
+   "subtitle": "C₆H₁₂O₆",
+   "station": "edu:compound_creator",
+   "inputs": [
+    {
+     "id": "edu:element_6",
+     "count": 6
+    },
+    {
+     "id": "edu:element_1",
+     "count": 12
+    },
+    {
+     "id": "edu:element_8",
+     "count": 6
+    }
+   ],
+   "outputs": [
+    {
+     "id": "minecraft:sugar"
+    }
+   ],
+   "text": "A natural compound: the Compound Creator makes the everyday item.",
+   "section": 3
+  },
+  {
+   "title": "Lab Table",
+   "text": "Put ingredients on the Lab Table and press Combine.\n\nMedicines can also be brewed: an Awkward Potion plus one element.",
+   "chapter": true,
+   "icon": "edu:lab_table",
+   "section": 4
+  },
+  {
+   "title": "Bleach",
+   "station": "edu:lab_table",
+   "inputs": [
+    {
+     "id": "edu:water",
+     "count": 3
+    },
+    {
+     "id": "edu:sodium_hypochlorite",
+     "count": 3
+    }
+   ],
+   "outputs": [
+    {
+     "id": "edu:bleach"
+    }
+   ],
+   "text": "Turns coloured wool, carpets, beds, banners, bundles, harnesses and leather armour white.",
+   "section": 4
+  },
+  {
+   "title": "Ice Bomb",
+   "station": "edu:lab_table",
+   "inputs": [
+    {
+     "id": "edu:sodium_acetate",
+     "count": 4
+    }
+   ],
+   "outputs": [
+    {
+     "id": "edu:ice_bomb"
+    }
+   ],
+   "text": "Throw it: it freezes the water where it lands.",
+   "section": 4
+  },
+  {
+   "title": "Super Fertilizer",
+   "station": "edu:lab_table",
+   "inputs": [
+    {
+     "id": "edu:ammonia"
+    },
+    {
+     "id": "edu:element_15"
+    }
+   ],
+   "outputs": [
+    {
+     "id": "edu:super_fertilizer"
+    }
+   ],
+   "text": "Like bone meal, but one use fully grows a sapling or crop.",
+   "section": 4
+  },
+  {
+   "title": "Heat Block",
+   "station": "edu:lab_table",
+   "inputs": [
+    {
+     "id": "edu:element_26"
+    },
+    {
+     "id": "edu:water"
+    },
+    {
+     "id": "minecraft:charcoal"
+    },
+    {
+     "id": "edu:salt"
+    }
+   ],
+   "outputs": [
+    {
+     "id": "edu:heat_block"
+    }
+   ],
+   "text": "Melts snow and ice within 2 blocks, without giving off light.",
+   "section": 4
+  },
+  {
+   "title": "Magnesium Salts",
+   "station": "edu:lab_table",
+   "inputs": [
+    {
+     "id": "edu:element_12"
+    },
+    {
+     "id": "edu:salt"
+    }
+   ],
+   "outputs": [
+    {
+     "id": "edu:magnesium_salts"
+    }
+   ],
+   "text": "A compound you can only make at the Lab Table.",
+   "section": 4
+  },
+  {
+   "title": "Elephant Toothpaste",
+   "station": "edu:lab_table",
+   "inputs": [
+    {
+     "id": "edu:soap"
+    },
+    {
+     "id": "edu:potassium_iodide"
+    },
+    {
+     "id": "edu:hydrogen_peroxide"
+    }
+   ],
+   "outputs": [
+    {
+     "id": "edu:garbage"
+    }
+   ],
+   "text": "A big foamy reaction! It leaves Garbage behind.",
+   "section": 4
+  },
+  {
+   "title": "Antidote",
+   "station": "edu:lab_table",
+   "inputs": [
+    {
+     "id": "minecraft:potion",
+     "potion": "minecraft:awkward"
+    },
+    {
+     "id": "edu:element_47"
+    }
+   ],
+   "outputs": [
+    {
+     "id": "edu:antidote"
+    }
+   ],
+   "text": "Cures poison. Also brewed: Awkward Potion + Silver.",
+   "section": 4
+  },
+  {
+   "title": "Elixir",
+   "station": "edu:lab_table",
+   "inputs": [
+    {
+     "id": "minecraft:potion",
+     "potion": "minecraft:awkward"
+    },
+    {
+     "id": "edu:element_27"
+    }
+   ],
+   "outputs": [
+    {
+     "id": "edu:elixir"
+    }
+   ],
+   "text": "Cures weakness. Also brewed: Awkward Potion + Cobalt.",
+   "section": 4
+  },
+  {
+   "title": "Eye Drops",
+   "station": "edu:lab_table",
+   "inputs": [
+    {
+     "id": "minecraft:potion",
+     "potion": "minecraft:awkward"
+    },
+    {
+     "id": "edu:element_20"
+    }
+   ],
+   "outputs": [
+    {
+     "id": "edu:eye_drops"
+    }
+   ],
+   "text": "Cures blindness. Also brewed: Awkward Potion + Calcium.",
+   "section": 4
+  },
+  {
+   "title": "Tonic",
+   "station": "edu:lab_table",
+   "inputs": [
+    {
+     "id": "minecraft:potion",
+     "potion": "minecraft:awkward"
+    },
+    {
+     "id": "edu:element_83"
+    }
+   ],
+   "outputs": [
+    {
+     "id": "edu:tonic"
+    }
+   ],
+   "text": "Cures nausea. Also brewed: Awkward Potion + Bismuth.",
+   "section": 4
+  },
+  {
+   "title": "Products",
+   "text": "Made on a normal Crafting Table. Coloured things are shown in one colour: swap the coloured ingredient for another colour.",
+   "chapter": true,
+   "icon": "edu:balloon_red",
+   "section": 5
+  },
+  {
+   "title": "Hardened Glass",
+   "station": "minecraft:crafting_table",
+   "inputs": [
+    {
+     "id": "edu:aluminum_oxide"
+    },
+    {
+     "id": "edu:aluminum_oxide"
+    },
+    {
+     "id": "edu:aluminum_oxide"
+    },
+    {
+     "id": "minecraft:glass"
+    },
+    {
+     "id": "minecraft:glass"
+    },
+    {
+     "id": "minecraft:glass"
+    },
+    {
+     "id": "edu:boron_trioxide"
+    },
+    {
+     "id": "edu:boron_trioxide"
+    },
+    {
+     "id": "edu:boron_trioxide"
+    }
+   ],
+   "outputs": [
+    {
+     "id": "edu:hard_glass",
+     "count": 3
+    }
+   ],
+   "grid": true,
+   "text": "Makes 3. As tough as obsidian against explosions.",
+   "section": 5
+  },
+  {
+   "title": "Hardened Glass Pane",
+   "station": "minecraft:crafting_table",
+   "inputs": [
+    {
+     "id": "edu:aluminum_oxide"
+    },
+    {
+     "id": "edu:aluminum_oxide"
+    },
+    {
+     "id": "edu:aluminum_oxide"
+    },
+    {
+     "id": "minecraft:glass_pane"
+    },
+    {
+     "id": "minecraft:glass_pane"
+    },
+    {
+     "id": "minecraft:glass_pane"
+    },
+    {
+     "id": "edu:boron_trioxide"
+    },
+    {
+     "id": "edu:boron_trioxide"
+    },
+    {
+     "id": "edu:boron_trioxide"
+    }
+   ],
+   "outputs": [
+    {
+     "id": "edu:hard_glass_pane",
+     "count": 3
+    }
+   ],
+   "grid": true,
+   "text": "Makes 3.",
+   "section": 5
+  },
+  {
+   "title": "Hardened Stained Glass",
+   "station": "minecraft:crafting_table",
+   "inputs": [
+    {
+     "id": "edu:aluminum_oxide"
+    },
+    {
+     "id": "edu:aluminum_oxide"
+    },
+    {
+     "id": "edu:aluminum_oxide"
+    },
+    {
+     "id": "minecraft:red_stained_glass"
+    },
+    {
+     "id": "minecraft:red_stained_glass"
+    },
+    {
+     "id": "minecraft:red_stained_glass"
+    },
+    {
+     "id": "edu:boron_trioxide"
+    },
+    {
+     "id": "edu:boron_trioxide"
+    },
+    {
+     "id": "edu:boron_trioxide"
+    }
+   ],
+   "outputs": [
+    {
+     "id": "edu:hard_red_stained_glass",
+     "count": 3
+    }
+   ],
+   "grid": true,
+   "text": "Makes 3. Shown in red: any colour of stained glass works.",
+   "section": 5
+  },
+  {
+   "title": "Hardened Stained Glass Pane",
+   "station": "minecraft:crafting_table",
+   "inputs": [
+    {
+     "id": "edu:aluminum_oxide"
+    },
+    {
+     "id": "edu:aluminum_oxide"
+    },
+    {
+     "id": "edu:aluminum_oxide"
+    },
+    {
+     "id": "minecraft:red_stained_glass_pane"
+    },
+    {
+     "id": "minecraft:red_stained_glass_pane"
+    },
+    {
+     "id": "minecraft:red_stained_glass_pane"
+    },
+    {
+     "id": "edu:boron_trioxide"
+    },
+    {
+     "id": "edu:boron_trioxide"
+    },
+    {
+     "id": "edu:boron_trioxide"
+    }
+   ],
+   "outputs": [
+    {
+     "id": "edu:hard_red_stained_glass_pane",
+     "count": 3
+    }
+   ],
+   "grid": true,
+   "text": "Makes 3. Shown in red: any colour of pane works.",
+   "section": 5
+  },
+  {
+   "title": "Colored Torch",
+   "station": "minecraft:crafting_table",
+   "inputs": [
+    {
+     "id": "edu:mercuric_chloride"
+    },
+    null,
+    null,
+    {
+     "id": "minecraft:torch"
+    },
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "outputs": [
+    {
+     "id": "edu:colored_torch_red"
+    }
+   ],
+   "grid": true,
+   "text": "Shown in red. The chloride picks the colour: see the next page.",
+   "section": 5
+  },
+  {
+   "title": "Chloride Colours",
+   "text": "Each chloride burns its own colour:\n\nCerium Chloride: blue\nMercuric Chloride: red\nPotassium Chloride: purple\nTungsten Chloride: green\nCalcium Chloride: orange (sparklers only)",
+   "section": 5
+  },
+  {
+   "title": "Underwater Torch",
+   "station": "minecraft:crafting_table",
+   "inputs": [
+    {
+     "id": "edu:element_12"
+    },
+    null,
+    null,
+    {
+     "id": "minecraft:torch"
+    },
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "outputs": [
+    {
+     "id": "edu:underwater_torch"
+    }
+   ],
+   "grid": true,
+   "text": "Magnesium over a torch. Stays lit under water.",
+   "section": 5
+  },
+  {
+   "title": "Underwater TNT",
+   "station": "minecraft:crafting_table",
+   "inputs": [
+    {
+     "id": "edu:element_11"
+    },
+    null,
+    null,
+    {
+     "id": "minecraft:tnt"
+    },
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "outputs": [
+    {
+     "id": "edu:underwater_tnt"
+    }
+   ],
+   "grid": true,
+   "text": "Sodium over TNT. Unlike normal TNT, it still breaks blocks under water.",
+   "section": 5
+  },
+  {
+   "title": "Sparkler",
+   "station": "minecraft:crafting_table",
+   "inputs": [
+    {
+     "id": "edu:mercuric_chloride"
+    },
+    null,
+    null,
+    {
+     "id": "edu:element_12"
+    },
+    null,
+    null,
+    {
+     "id": "minecraft:stick"
+    },
+    null,
+    null
+   ],
+   "outputs": [
+    {
+     "id": "edu:sparkler_red"
+    }
+   ],
+   "grid": true,
+   "text": "Shown in red. The chloride picks the colour (see Chloride Colours).",
+   "section": 5
+  },
+  {
+   "title": "Glow Stick",
+   "station": "minecraft:crafting_table",
+   "inputs": [
+    {
+     "id": "edu:polyethylene"
+    },
+    {
+     "id": "edu:hydrogen_peroxide"
+    },
+    {
+     "id": "edu:polyethylene"
+    },
+    {
+     "id": "edu:polyethylene"
+    },
+    {
+     "id": "minecraft:red_dye"
+    },
+    {
+     "id": "edu:polyethylene"
+    },
+    {
+     "id": "edu:polyethylene"
+    },
+    {
+     "id": "edu:luminol"
+    },
+    {
+     "id": "edu:polyethylene"
+    }
+   ],
+   "outputs": [
+    {
+     "id": "edu:glow_stick_red"
+    }
+   ],
+   "grid": true,
+   "text": "Shown in red: any dye but light gray or black works. Hold use to shake it.",
+   "section": 5
+  },
+  {
+   "title": "Balloon",
+   "station": "minecraft:crafting_table",
+   "inputs": [
+    {
+     "id": "edu:latex"
+    },
+    {
+     "id": "minecraft:red_dye"
+    },
+    {
+     "id": "edu:latex"
+    },
+    {
+     "id": "edu:latex"
+    },
+    {
+     "id": "edu:element_2"
+    },
+    {
+     "id": "edu:latex"
+    },
+    {
+     "id": "edu:latex"
+    },
+    {
+     "id": "minecraft:lead"
+    },
+    {
+     "id": "edu:latex"
+    }
+   ],
+   "outputs": [
+    {
+     "id": "edu:balloon_red"
+    }
+   ],
+   "grid": true,
+   "text": "Shown in red: use any dye for that colour.",
+   "section": 5
+  },
+  {
+   "title": "Flying Balloons",
+   "text": "Use a balloon on a fence or a mob to tie it on. Light mobs float away with it; heavy ones stay put.\n\nPunch it to push it (and its mob). Right-click it or the fence to untie it. Ceilings and arrows pop it.",
+   "section": 5
+  },
+  {
+   "title": "Bleaching",
+   "station": "minecraft:crafting_table",
+   "inputs": [
+    {
+     "id": "edu:bleach"
+    },
+    {
+     "id": "minecraft:orange_wool"
+    }
+   ],
+   "outputs": [
+    {
+     "id": "minecraft:white_wool"
+    }
+   ],
+   "grid": true,
+   "text": "Also whitens carpets, beds, banners, bundles, harnesses and leather armour.",
+   "section": 5
+  },
+  {
+   "title": "Classroom",
+   "text": "Tools for building lessons and adventure maps: chalkboards, permission blocks, World Builder, NPCs, and the Camera and Portfolio.",
+   "chapter": true,
+   "icon": "edu:slate",
+   "section": 6
+  },
+  {
+   "title": "Slate",
+   "station": "minecraft:crafting_table",
+   "inputs": [
+    {
+     "id": "minecraft:green_terracotta"
+    },
+    {
+     "id": "minecraft:green_terracotta"
+    },
+    {
+     "id": "minecraft:green_terracotta"
+    },
+    {
+     "id": "minecraft:spruce_planks"
+    },
+    {
+     "id": "minecraft:spruce_planks"
+    },
+    {
+     "id": "minecraft:spruce_planks"
+    },
+    {
+     "id": "minecraft:stick"
+    },
+    null,
+    {
+     "id": "minecraft:stick"
+    }
+   ],
+   "outputs": [
+    {
+     "id": "edu:slate"
+    }
+   ],
+   "grid": true,
+   "text": "A small chalkboard (1x1). Any kind of planks works (shown with spruce).",
+   "section": 6
+  },
+  {
+   "title": "Poster",
+   "station": "minecraft:crafting_table",
+   "inputs": [
+    {
+     "id": "edu:slate"
+    },
+    {
+     "id": "edu:slate"
+    },
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "outputs": [
+    {
+     "id": "edu:poster"
+    }
+   ],
+   "grid": true,
+   "text": "Two Slates side by side make a Poster (2x1).",
+   "section": 6
+  },
+  {
+   "title": "Board",
+   "station": "minecraft:crafting_table",
+   "inputs": [
+    {
+     "id": "edu:poster"
+    },
+    null,
+    null,
+    {
+     "id": "edu:poster"
+    },
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "outputs": [
+    {
+     "id": "edu:board"
+    }
+   ],
+   "grid": true,
+   "text": "Two Posters, one above the other, make a Board (3x2).",
+   "section": 6
+  },
+  {
+   "title": "Chalkboards",
+   "text": "Place a chalkboard on a wall, or on the floor to stand it on legs. Use it to write.\n\nWorld Builders can lock a chalkboard so only they can edit it. Ones they place can only be broken by World Builders.",
+   "section": 6
+  },
+  {
+   "title": "Permission Blocks",
+   "text": "Allow: anyone can build above it.\nDeny: no one can build above it.\nBorder: no one can pass its column.\nWorld Builders ignore all three.",
+   "show": [
+    {
+     "id": "edu:allow"
+    },
+    {
+     "id": "edu:deny"
+    },
+    {
+     "id": "edu:border_block"
+    }
+   ],
+   "section": 6
+  },
+  {
+   "title": "World Builder",
+   "text": "World Builders can build anywhere and edit NPCs and locked chalkboards.\n\n/wb gives or takes it. Only the world's host can use it, in chat or in command blocks; players who join can't.",
+   "section": 6
+  },
+  {
+   "title": "Immutable World",
+   "text": "Turn on the edu:immutable_world gamerule and only World Builders can change the world, except above Allow blocks.",
+   "section": 6
+  },
+  {
+   "title": "NPCs",
+   "text": "World Builders place them with the spawn egg and give them a skin, dialogue and buttons that run commands. Anyone can talk to them.",
+   "show": [
+    {
+     "id": "edu:npc_spawn_egg"
+    }
+   ],
+   "section": 6
+  },
+  {
+   "title": "Camera",
+   "station": "minecraft:crafting_table",
+   "inputs": [
+    {
+     "id": "minecraft:spruce_planks"
+    },
+    {
+     "id": "minecraft:paper"
+    },
+    {
+     "id": "minecraft:spruce_planks"
+    },
+    {
+     "id": "minecraft:flint"
+    },
+    {
+     "id": "minecraft:redstone"
+    },
+    {
+     "id": "minecraft:flint"
+    },
+    {
+     "id": "minecraft:copper_ingot"
+    },
+    {
+     "id": "minecraft:copper_ingot"
+    },
+    {
+     "id": "minecraft:copper_ingot"
+    }
+   ],
+   "outputs": [
+    {
+     "id": "edu:camera"
+    }
+   ],
+   "grid": true,
+   "text": "Any kind of planks works (shown with spruce).",
+   "section": 6
+  },
+  {
+   "title": "Taking Pictures",
+   "text": "Place the Camera to set up its tripod, then click it: it turns to face you, flashes, and takes your picture.\n\nSneak and use the Camera in your hand to take a close-up of what you are looking at.",
+   "section": 6
+  },
+  {
+   "title": "Portfolio",
+   "station": "minecraft:crafting_table",
+   "inputs": [
+    {
+     "id": "minecraft:book"
+    },
+    {
+     "id": "minecraft:paper"
+    }
+   ],
+   "outputs": [
+    {
+     "id": "edu:portfolio"
+    }
+   ],
+   "grid": true,
+   "text": "A book and a piece of paper. Keeps every picture you take, with captions, and can export them as a PDF.",
+   "section": 6
+  }
+ ]
+}
