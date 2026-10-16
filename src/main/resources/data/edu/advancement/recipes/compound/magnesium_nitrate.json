@@ -1,0 +1,54 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_element_12": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "edu:element_12"
+          }
+        ]
+      }
+    },
+    "has_element_7": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "edu:element_7"
+          }
+        ]
+      }
+    },
+    "has_element_8": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "edu:element_8"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "edu:compound/magnesium_nitrate"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_element_12",
+      "has_element_7",
+      "has_element_8",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "edu:compound/magnesium_nitrate"
+    ]
+  }
+}

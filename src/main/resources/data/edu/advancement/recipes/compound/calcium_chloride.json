@@ -1,0 +1,43 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_element_17": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "edu:element_17"
+          }
+        ]
+      }
+    },
+    "has_element_20": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "edu:element_20"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "edu:compound/calcium_chloride"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_element_17",
+      "has_element_20",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "edu:compound/calcium_chloride"
+    ]
+  }
+}
