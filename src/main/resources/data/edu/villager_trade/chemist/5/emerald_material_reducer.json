@@ -1,0 +1,12 @@
+{
+  "wants": {
+    "id": "minecraft:emerald",
+    "count": 32.0
+  },
+  "gives": {
+    "id": "edu:material_reducer"
+  },
+  "max_uses": 3.0,
+  "reputation_discount": 0.05,
+  "xp": 30.0
+}

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "C": "edu:tungsten_chloride",
+    "M": "edu:element_12",
+    "S": "minecraft:stick"
+  },
+  "pattern": [
+    "C",
+    "M",
+    "S"
+  ],
+  "result": {
+    "count": 1,
+    "id": "edu:sparkler_green"
+  },
+  "group": "edu:sparkler"
+}

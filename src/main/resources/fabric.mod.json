@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "id": "edu",
+  "version": "${version}",
+  "name": "Education Edition",
+  "description": "Brings Education Edition to Java",
+  "authors": [
+    "UnknownOutlaw"
+  ],
+  "license": "MIT",
+  "icon": "assets/edu/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "edu.chemistry.EduMod"
+    ],
+    "client": [
+      "edu.chemistry.client.EduClient"
+    ],
+    "jei_mod_plugin": [
+      "edu.chemistry.compat.jei.EduJeiPlugin"
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=0.19.3",
+    "minecraft": "~26.1.2",
+    "java": ">=21",
+    "fabric-api": "*"
+  },
+  "mixins": [
+    "edu.mixins.json"
+  ],
+  "suggests": {
+    "jei": "*"
+  }
+}

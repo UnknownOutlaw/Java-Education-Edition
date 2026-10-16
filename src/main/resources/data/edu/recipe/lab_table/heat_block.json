@@ -1,0 +1,20 @@
+{
+  "type": "edu:lab_table",
+  "ingredients": [
+    {
+      "id": "edu:element_26"
+    },
+    {
+      "id": "edu:water"
+    },
+    {
+      "id": "minecraft:charcoal"
+    },
+    {
+      "id": "edu:salt"
+    }
+  ],
+  "result": {
+    "id": "edu:heat_block"
+  }
+}
