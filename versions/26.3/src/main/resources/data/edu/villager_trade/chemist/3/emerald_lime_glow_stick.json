@@ -1,0 +1,12 @@
+{
+  "wants": {
+    "id": "minecraft:emerald",
+    "count": 3
+  },
+  "gives": {
+    "id": "edu:glow_stick_lime"
+  },
+  "max_uses": 12,
+  "reputation_discount": 0.05,
+  "xp": 10
+}

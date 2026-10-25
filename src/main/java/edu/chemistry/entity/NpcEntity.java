@@ -122,12 +122,14 @@ public class NpcEntity extends Entity {
             this.smoothHead();
             return;
         }
+        if (this.isRemoved()) return;
         this.lookAround();
         // NPCs don't walk, but they do fall
         Vec3 v = this.getDeltaMovement();
         if (!this.onGround()) v = v.add(0.0, -0.08, 0.0);
         this.setDeltaMovement(v);
         this.move(MoverType.SELF, v);
+        edu.chemistry.util.BlockTriggers.touch(this);
         this.setDeltaMovement(this.onGround() ? Vec3.ZERO : this.getDeltaMovement().multiply(0.0, 0.98, 0.0));
     }
 

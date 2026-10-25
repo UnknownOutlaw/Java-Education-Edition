@@ -98,7 +98,7 @@ public final class ControlTips {
         "set_up_camera", "take_picture", "close_up", "fertilize", "spawn", "ignite", "till",
         "eat", "drink", "block", "draw_bow", "load", "shoot", "throw", "zoom", "toot", "cast", "reel_in", "read",
         "shake", "light", "drop", "dismount", "start_flying", "fly_up", "fly_down", "swim_up", "swim_down", "jump", "sneak",
-        "sprint", "forward", "back", "left", "right", "inventory", "chat", "control_tips");
+        "sprint", "forward", "back", "left", "right", "inventory", "chat", "code_builder", "control_tips");
     private static final int MAX = 5;
     private static final int ROW_H = 17;
     private static final Identifier MOUSE_LEFT = Identifier.fromNamespaceAndPath("edu", "textures/gui/control_tips/mouse_left.png");
@@ -215,6 +215,7 @@ public final class ControlTips {
         }
         tips.add(new Tip(o.keyInventory, "inventory"));
         tips.add(new Tip(o.keyChat, "chat"));
+        tips.add(new Tip(edu.chemistry.client.code.CodeBuilderClient.KEY, "code_builder"));
         if (!p.isPassenger() && !p.getAbilities().flying && !p.isInWater()) tips.add(new Tip(o.keyShift, "sneak"));
         tips.add(new Tip(o.keySprint, "sprint"));
         return tips;

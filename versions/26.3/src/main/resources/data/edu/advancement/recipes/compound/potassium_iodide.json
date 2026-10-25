@@ -1,0 +1,43 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_element_19": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "edu:element_19"
+          }
+        ]
+      }
+    },
+    "has_element_53": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "edu:element_53"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipes": "edu:compound/potassium_iodide"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_element_19",
+      "has_element_53",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "edu:compound/potassium_iodide"
+    ]
+  }
+}

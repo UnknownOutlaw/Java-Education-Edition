@@ -28,6 +28,7 @@ public class EduMod implements ModInitializer {
         EduItems.init();
         edu.chemistry.registry.EduVillagers.init();
         EduEntities.init();
+        edu.chemistry.agent.Agents.init();
         EduMenus.init();
         EduTabs.init();
         edu.chemistry.registry.EduRecipes.init();

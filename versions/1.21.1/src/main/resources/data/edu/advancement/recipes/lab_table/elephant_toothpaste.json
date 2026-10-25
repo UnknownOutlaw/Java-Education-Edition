@@ -1,0 +1,54 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_hydrogen_peroxide": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "edu:hydrogen_peroxide"
+          }
+        ]
+      }
+    },
+    "has_potassium_iodide": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "edu:potassium_iodide"
+          }
+        ]
+      }
+    },
+    "has_soap": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "edu:soap"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "edu:lab_table/elephant_toothpaste"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_hydrogen_peroxide",
+      "has_potassium_iodide",
+      "has_soap",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "edu:lab_table/elephant_toothpaste"
+    ]
+  }
+}

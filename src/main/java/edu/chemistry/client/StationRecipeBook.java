@@ -231,6 +231,21 @@ public class StationRecipeBook {
 
     /** Ghost ingredients in the table, drawn like vanilla's (call after the table background). */
     public void renderGhosts(GuiGraphicsExtractor g, Font font, int leftPos, int topPos, List<Slot> grid, int mouseX, int mouseY) {
+        this.renderGhosts(g, font, leftPos, topPos, grid, mouseX, mouseY, 16, 16);
+    }
+
+    /**
+     * frame, resultFrame: the slot frame sizes the ghosts sit in the middle of (16 normally; Legacy4J's frames in the
+     * console layout)
+     */
+    public void renderGhosts(GuiGraphicsExtractor g, Font font, int leftPos, int topPos, List<Slot> grid, int mouseX, int mouseY, int frame,
+                             int resultFrame) {
+        int resultInset = (resultFrame - 16) / 2;
+        int resultLeft = leftPos + resultInset;
+        int resultTop = topPos + resultInset;
+        int inset = (frame - 16) / 2;
+        int gridLeft = leftPos + inset;
+        int gridTop = topPos + inset;
         for (Slot s : grid) {
             if (s.hasItem()) {
                 this.clearGhosts();
@@ -238,8 +253,8 @@ public class StationRecipeBook {
             }
         }
         this.ghosts.forEach((slot, stack) -> {
-            int x = leftPos + slot.x;
-            int y = topPos + slot.y;
+            int x = gridLeft + slot.x;
+            int y = gridTop + slot.y;
             g.fill(x, y, x + 16, y + 16, 0x30FF0000);
             g.fakeItem(stack, x, y);
             g.fill(x, y, x + 16, y + 16, 0x30FFFFFF);
@@ -247,8 +262,8 @@ public class StationRecipeBook {
             if (in(mouseX, mouseY, x, y, 16, 16)) g.setTooltipForNextFrame(font, stack, mouseX, mouseY);
         });
         if (this.ghostResultSlot != null && !this.ghostResult.isEmpty() && !this.ghostResultSlot.hasItem()) {
-            int x = leftPos + this.ghostResultSlot.x;
-            int y = topPos + this.ghostResultSlot.y;
+            int x = resultLeft + this.ghostResultSlot.x;
+            int y = resultTop + this.ghostResultSlot.y;
             g.fill(x, y, x + 16, y + 16, 0x30FF0000);
             g.fakeItem(this.ghostResult, x, y);
             g.fill(x, y, x + 16, y + 16, 0x30FFFFFF);

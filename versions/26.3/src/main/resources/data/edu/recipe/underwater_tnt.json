@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "N": "edu:element_11",
+    "T": "minecraft:tnt"
+  },
+  "pattern": [
+    "N",
+    "T"
+  ],
+  "result": {
+    "count": 1,
+    "id": "edu:underwater_tnt"
+  }
+}

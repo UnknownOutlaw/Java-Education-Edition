@@ -1,0 +1,12 @@
+{
+  "wants": {
+    "id": "minecraft:emerald",
+    "count": 5
+  },
+  "gives": {
+    "id": "edu:balloon_red"
+  },
+  "max_uses": 12,
+  "reputation_discount": 0.05,
+  "xp": 15
+}

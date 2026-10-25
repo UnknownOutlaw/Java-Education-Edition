@@ -1,0 +1,16 @@
+{
+  "type": "edu:compound",
+  "ingredients": [
+    {
+      "id": "edu:element_5",
+      "count": 2
+    },
+    {
+      "id": "edu:element_8",
+      "count": 3
+    }
+  ],
+  "result": {
+    "id": "edu:boron_trioxide"
+  }
+}

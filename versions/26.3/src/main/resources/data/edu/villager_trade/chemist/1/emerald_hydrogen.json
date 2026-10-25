@@ -1,0 +1,12 @@
+{
+  "wants": {
+    "id": "minecraft:emerald"
+  },
+  "gives": {
+    "id": "edu:element_1",
+    "count": 6
+  },
+  "max_uses": 12,
+  "reputation_discount": 0.05,
+  "xp": 1
+}

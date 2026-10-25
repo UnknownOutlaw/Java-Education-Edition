@@ -42,6 +42,42 @@ public class CompoundCreatorScreen extends EduContainerScreen<CompoundCreatorMen
         return this.menu.getSlot(0);
     }
 
+    /**
+     * Console layout: the 3x3 element grid, an arrow, and the compound in a big result frame like the furnace's, centred
+     * across the panel. (The recipe book is hidden with Legacy4J.)
+     */
+    public static edu.chemistry.client.legacy.StationLayout layout(boolean sd) {
+        var l = new edu.chemistry.client.legacy.StationLayout(sd);
+        int g = l.slot;
+        int gridX = (l.width - (3 * g + l.s(10) + l.arrowWidth() + l.s(10) + l.resultSize())) / 2;
+        int gridY = l.s(26);
+        for (int r = 0; r < 3; r++) {
+            for (int c = 0; c < 3; c++) l.put(1 + c + r * 3, gridX + c * g, gridY + r * g, g);
+        }
+        int[] arrow = l.part("arrow", gridX + 3 * g + l.s(10), gridY + (3 * g - l.arrowHeight()) / 2, l.arrowWidth(), l.arrowHeight());
+        int res = l.resultSize();
+        int resX = arrow[0] + arrow[2] + l.s(10);
+        int resY = gridY + (3 * g - res) / 2;
+        l.put(0, resX, resY, res);
+        l.part("formula", resX + res / 2, resY + res + l.s(4), 0, 0);
+        l.inventory(10, l.titleX, gridY + 3 * g + l.s(12));
+        return l;
+    }
+
+    @Override
+    protected edu.chemistry.client.legacy.StationLayout legacyLayout(boolean sd) {
+        return layout(sd);
+    }
+
+    @Override
+    public void extractBackground(GuiGraphicsExtractor graphics, int mouseX, int mouseY, float a) {
+        super.extractBackground(graphics, mouseX, mouseY, a);
+        if (this.legacy != null) {
+            int[] p = this.legacy.part("arrow");
+            edu.chemistry.client.legacy.LegacyUi.arrow(graphics, this.leftPos + p[0], this.topPos + p[1], this.legacy.sd);
+        }
+    }
+
     static String formula(ItemStack stack) {
         if (stack.getItem() instanceof CompoundItem c) {
             for (int i = 0; i < ChemData.COMPOUND_IDS.length; i++) {
@@ -56,15 +92,25 @@ public class CompoundCreatorScreen extends EduContainerScreen<CompoundCreatorMen
 
     @Override
     protected void extractLabels(GuiGraphicsExtractor graphics, int mouseX, int mouseY) {
-        this.drawTitle(graphics);
-        // Bedrock's compound creator has no "Inventory" label
-        ItemStack result = this.menu.getSlot(0).getItem();
-        if (!result.isEmpty()) {
-            String f = formula(result);
-            if (!f.isEmpty()) {
-                int w = this.font.width(f);
-                graphics.text(this.font, f, Math.min(this.imageWidth - 4 - w, 146 - w / 2), 66, TITLE_COLOR, false);
+        this.labels(() -> {
+            this.drawTitle(graphics);
+            // Bedrock's compound creator has no "Inventory" label; the console layout has one like every console menu
+            if (this.legacy != null) {
+                graphics.text(this.font, this.playerInventoryTitle, this.inventoryLabelX, this.inventoryLabelY, this.labelColor(), false);
             }
-        }
+            ItemStack result = this.menu.getSlot(0).getItem();
+            if (!result.isEmpty()) {
+                String f = formula(result);
+                if (!f.isEmpty()) {
+                    int w = this.font.width(f);
+                    if (this.legacy != null) {
+                        int[] p = this.legacy.part("formula");
+                        graphics.text(this.font, f, Math.max(2, Math.min(this.imageWidth - 4 - w, p[0] - w / 2)), p[1], this.labelColor(), false);
+                    } else {
+                        graphics.text(this.font, f, Math.min(this.imageWidth - 4 - w, 146 - w / 2), 66, TITLE_COLOR, false);
+                    }
+                }
+            }
+        });
     }
 }

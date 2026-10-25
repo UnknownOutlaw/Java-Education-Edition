@@ -1,0 +1,43 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_element_20": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "edu:element_20"
+          }
+        ]
+      }
+    },
+    "has_element_35": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "edu:element_35"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipes": "edu:compound/calcium_bromide"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_element_20",
+      "has_element_35",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "edu:compound/calcium_bromide"
+    ]
+  }
+}

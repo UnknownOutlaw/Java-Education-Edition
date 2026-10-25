@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "C": "edu:potassium_chloride",
+    "T": "minecraft:torch"
+  },
+  "pattern": [
+    "C",
+    "T"
+  ],
+  "result": {
+    "count": 1,
+    "id": "edu:colored_torch_purple"
+  },
+  "group": "edu:colored_torch"
+}

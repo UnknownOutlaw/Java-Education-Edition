@@ -87,7 +87,7 @@ public final class PhotoNetwork {
         try {
             JsonObject o = JsonParser.parseString(String.join("", buf)).getAsJsonObject();
             byte[] png = Base64.getDecoder().decode(o.get("png").getAsString());
-            if (png.length > Photos.MAX_BYTES || png.length < 8 || png[0] != (byte) 0x89 || png[1] != 'P') return;
+            if (png.length > Photos.MAX_BYTES || !Photos.isPng(png) && !Photos.isJpeg(png)) return;
             String caption = o.has("caption") ? o.get("caption").getAsString() : "";
             if (caption.length() > 1000) caption = caption.substring(0, 1000);
             String id = o.has("id") ? o.get("id").getAsString() : UUID.randomUUID().toString();

@@ -7,6 +7,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.Redirect;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 /**
@@ -18,6 +19,12 @@ public abstract class MinecraftFrameMixin {
     @Redirect(method = "renderFrame", at = @At(value = "INVOKE", target = "Lcom/mojang/blaze3d/pipeline/RenderTarget;blitToScreen()V"))
     private void edu$keepPictureFramesOffScreen(RenderTarget target) {
         if (!PictureTaker.hideThisFrame()) target.blitToScreen();
+    }
+
+    /** Code Builder's key, and telling the MakeCode editor when a world is joined or left */
+    @Inject(method = "tick", at = @At("TAIL"))
+    private void edu$codeBuilder(CallbackInfo ci) {
+        edu.chemistry.client.code.CodeBuilderClient.tick();
     }
 
     /** the HUD is hidden for the picture, but everyone's name tags still show in it */

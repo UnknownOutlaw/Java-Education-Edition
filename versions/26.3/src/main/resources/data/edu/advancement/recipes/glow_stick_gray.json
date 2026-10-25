@@ -1,0 +1,54 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_hydrogen_peroxide": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "edu:hydrogen_peroxide"
+          }
+        ]
+      }
+    },
+    "has_luminol": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "edu:luminol"
+          }
+        ]
+      }
+    },
+    "has_polyethylene": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "edu:polyethylene"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipes": "edu:glow_stick_gray"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_hydrogen_peroxide",
+      "has_luminol",
+      "has_polyethylene",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "edu:glow_stick_gray"
+    ]
+  }
+}

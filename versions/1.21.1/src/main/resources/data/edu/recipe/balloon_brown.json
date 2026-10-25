@@ -1,0 +1,33 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "X": {
+      "item": "edu:latex"
+    },
+    "D": [
+      {
+        "item": "minecraft:brown_dye"
+      },
+      {
+        "item": "minecraft:cocoa_beans"
+      }
+    ],
+    "H": {
+      "item": "edu:element_2"
+    },
+    "L": {
+      "item": "minecraft:lead"
+    }
+  },
+  "pattern": [
+    "XDX",
+    "XHX",
+    "XLX"
+  ],
+  "result": {
+    "count": 1,
+    "id": "edu:balloon_brown"
+  },
+  "group": "edu:balloon"
+}

@@ -46,6 +46,7 @@ public class EduClient implements ClientModInitializer {
         registerBlockEntityRenderer(edu.chemistry.registry.EduBlockEntities.CHALKBOARD, ChalkboardRenderer::new);
         registerRenderer(EduEntities.NPC, NpcRenderer::new);
         registerRenderer(EduEntities.TRIPOD_CAMERA, TripodCameraRenderer::new);
+        registerRenderer(EduEntities.AGENT, AgentRenderer::new);
         edu.chemistry.photo.PhotoHooks.takePicture = (closeUp, from) -> edu.chemistry.client.photo.PictureTaker.request(closeUp, from);
         edu.chemistry.item.GuideBookItem.open = () -> Minecraft.getInstance().setScreen(new GuideBookScreen());
         edu.chemistry.photo.PhotoHooks.openPortfolio = () -> Minecraft.getInstance().setScreen(new edu.chemistry.client.photo.PortfolioScreen());

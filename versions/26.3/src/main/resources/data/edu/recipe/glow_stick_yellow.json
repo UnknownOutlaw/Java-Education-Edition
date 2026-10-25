@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "P": "edu:polyethylene",
+    "H": "edu:hydrogen_peroxide",
+    "D": "minecraft:yellow_dye",
+    "L": "edu:luminol"
+  },
+  "pattern": [
+    "PHP",
+    "PDP",
+    "PLP"
+  ],
+  "result": {
+    "count": 1,
+    "id": "edu:glow_stick_yellow"
+  },
+  "group": "edu:glow_stick"
+}

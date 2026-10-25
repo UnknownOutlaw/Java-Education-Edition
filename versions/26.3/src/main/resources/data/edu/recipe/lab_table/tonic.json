@@ -1,0 +1,19 @@
+{
+  "type": "edu:lab_table",
+  "ingredients": [
+    {
+      "id": "minecraft:potion",
+      "components": {
+        "minecraft:potion_contents": {
+          "potion": "minecraft:awkward"
+        }
+      }
+    },
+    {
+      "id": "edu:element_83"
+    }
+  ],
+  "result": {
+    "id": "edu:tonic"
+  }
+}

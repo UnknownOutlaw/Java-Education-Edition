@@ -17,6 +17,7 @@ public final class EduEntities {
     public static EntityType<UnderwaterPrimedTnt> UNDERWATER_TNT;
     public static EntityType<edu.chemistry.entity.NpcEntity> NPC;
     public static EntityType<edu.chemistry.entity.TripodCameraEntity> TRIPOD_CAMERA;
+    public static EntityType<edu.chemistry.agent.AgentEntity> AGENT;
 
     private static <T extends net.minecraft.world.entity.Entity> EntityType<T> register(String name, EntityType.Builder<T> builder) {
         ResourceKey<EntityType<?>> key = ResourceKey.create(Registries.ENTITY_TYPE, EduMod.id(name));
@@ -34,6 +35,9 @@ public final class EduEntities {
             .noLootTable().fireImmune().sized(0.6F, 1.8F).eyeHeight(1.62F).clientTrackingRange(10).updateInterval(3));
         TRIPOD_CAMERA = register("tripod_camera", EntityType.Builder.<edu.chemistry.entity.TripodCameraEntity>of(edu.chemistry.entity.TripodCameraEntity::new, MobCategory.MISC)
             .noLootTable().fireImmune().sized(0.75F, 1.8F).eyeHeight(1.56F).clientTrackingRange(10).updateInterval(3));
+        // Education's Agent: 0.6 wide and 0.93 high, never burns, sent to clients often so its steps look smooth
+        AGENT = register("agent", EntityType.Builder.<edu.chemistry.agent.AgentEntity>of(edu.chemistry.agent.AgentEntity::new, MobCategory.MISC)
+            .noLootTable().fireImmune().sized(0.6F, 0.93F).eyeHeight(0.75F).clientTrackingRange(10).updateInterval(1));
     }
 
     private EduEntities() {

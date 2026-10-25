@@ -1,0 +1,43 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_aluminum_oxide": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "edu:aluminum_oxide"
+          }
+        ]
+      }
+    },
+    "has_boron_trioxide": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "edu:boron_trioxide"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "edu:hard_red_stained_glass"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_aluminum_oxide",
+      "has_boron_trioxide",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "edu:hard_red_stained_glass"
+    ]
+  }
+}

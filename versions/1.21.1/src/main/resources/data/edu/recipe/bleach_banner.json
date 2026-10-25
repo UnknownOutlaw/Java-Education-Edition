@@ -1,0 +1,63 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "edu:bleach"
+    },
+    [
+      {
+        "item": "minecraft:orange_banner"
+      },
+      {
+        "item": "minecraft:magenta_banner"
+      },
+      {
+        "item": "minecraft:light_blue_banner"
+      },
+      {
+        "item": "minecraft:yellow_banner"
+      },
+      {
+        "item": "minecraft:lime_banner"
+      },
+      {
+        "item": "minecraft:pink_banner"
+      },
+      {
+        "item": "minecraft:gray_banner"
+      },
+      {
+        "item": "minecraft:light_gray_banner"
+      },
+      {
+        "item": "minecraft:cyan_banner"
+      },
+      {
+        "item": "minecraft:purple_banner"
+      },
+      {
+        "item": "minecraft:blue_banner"
+      },
+      {
+        "item": "minecraft:brown_banner"
+      },
+      {
+        "item": "minecraft:green_banner"
+      },
+      {
+        "item": "minecraft:red_banner"
+      },
+      {
+        "item": "minecraft:black_banner"
+      },
+      {
+        "item": "minecraft:white_banner"
+      }
+    ]
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:white_banner"
+  }
+}

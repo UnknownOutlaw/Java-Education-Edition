@@ -1,0 +1,14 @@
+{
+  "type": "edu:lab_table",
+  "ingredients": [
+    {
+      "id": "edu:ammonia"
+    },
+    {
+      "id": "edu:element_15"
+    }
+  ],
+  "result": {
+    "id": "edu:super_fertilizer"
+  }
+}

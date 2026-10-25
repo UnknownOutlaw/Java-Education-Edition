@@ -1,0 +1,14 @@
+{
+  "type": "edu:compound",
+  "ingredients": [
+    {
+      "id": "edu:element_12"
+    },
+    {
+      "id": "edu:element_8"
+    }
+  ],
+  "result": {
+    "id": "edu:magnesium_oxide"
+  }
+}

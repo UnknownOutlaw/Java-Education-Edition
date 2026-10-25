@@ -3,7 +3,7 @@
   "id": "edu",
   "version": "${version}",
   "name": "Education Edition",
-  "description": "Brings Education Edition to Java",
+  "description": "Minecraft Education features for Java Edition.\n\nChemistry: all 118 elements, compounds, and the Compound Creator, Material Reducer, Element Constructor and Lab Table, plus balloons, glow sticks, sparklers, colored torches, underwater TNT, ice bombs, bleach and medicines.\n\nClassroom: chalkboards, NPCs, Allow, Deny and Border blocks, World Builder, the Camera and Portfolio, and the Agent.\n\nCode Builder: press C to code with MakeCode for Minecraft in a web browser.\n\nTurn it on with the Education Edition option when creating a world, or with /gamerule edu:education_features true. The Chemistry Guide book explains it all in game.",
   "authors": [
     "UnknownOutlaw"
   ],

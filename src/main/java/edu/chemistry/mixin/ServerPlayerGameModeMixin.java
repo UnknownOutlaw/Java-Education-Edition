@@ -13,15 +13,38 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-/** With Education Edition off, chemistry items can't be used or placed and the chemistry tables can't be opened. */
+/**
+ * With Education Edition off, chemistry items can't be used or placed and the chemistry tables can't be opened. Also
+ * tells Code Builder about blocks broken and items used.
+ */
 @Mixin(ServerPlayerGameMode.class)
 public abstract class ServerPlayerGameModeMixin {
+    @org.spongepowered.asm.mixin.Shadow
+    @org.spongepowered.asm.mixin.Final
+    protected ServerPlayer player;
+    @org.spongepowered.asm.mixin.Unique
+    private net.minecraft.world.level.block.state.BlockState edu$breaking;
+
+    @Inject(method = "destroyBlock", at = @At("HEAD"))
+    private void edu$rememberBlock(net.minecraft.core.BlockPos pos, CallbackInfoReturnable<Boolean> cir) {
+        this.edu$breaking = this.player.level().getBlockState(pos);
+    }
+
+    /** a block the player broke, for MakeCode's "on block broken" */
+    @Inject(method = "destroyBlock", at = @At("RETURN"))
+    private void edu$blockBroken(net.minecraft.core.BlockPos pos, CallbackInfoReturnable<Boolean> cir) {
+        if (cir.getReturnValueZ() && this.edu$breaking != null) edu.chemistry.code.CodeEvents.blockBroken(this.player, this.edu$breaking);
+        this.edu$breaking = null;
+    }
+
     @Inject(method = "useItem", at = @At("HEAD"), cancellable = true)
     private void edu$blockUse(ServerPlayer player, Level level, ItemStack stack, InteractionHand hand, CallbackInfoReturnable<InteractionResult> cir) {
         if (EduRules.isEdu(stack) && !EduRules.enabled(level)) {
             EduRules.tellDisabled(player);
             cir.setReturnValue(InteractionResult.FAIL);
+            return;
         }
+        edu.chemistry.code.CodeEvents.itemInteracted(player, stack);
     }
 
     @Inject(method = "useItemOn", at = @At("HEAD"), cancellable = true)

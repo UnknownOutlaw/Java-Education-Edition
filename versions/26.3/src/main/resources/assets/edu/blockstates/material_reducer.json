@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "edu:block/material_reducer"
+    },
+    "facing=east": {
+      "model": "edu:block/material_reducer",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "edu:block/material_reducer",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "edu:block/material_reducer",
+      "y": 270
+    }
+  }
+}

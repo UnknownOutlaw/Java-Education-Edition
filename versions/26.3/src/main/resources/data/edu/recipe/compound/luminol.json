@@ -1,0 +1,24 @@
+{
+  "type": "edu:compound",
+  "ingredients": [
+    {
+      "id": "edu:element_6",
+      "count": 8
+    },
+    {
+      "id": "edu:element_1",
+      "count": 7
+    },
+    {
+      "id": "edu:element_7",
+      "count": 3
+    },
+    {
+      "id": "edu:element_8",
+      "count": 2
+    }
+  ],
+  "result": {
+    "id": "edu:luminol"
+  }
+}

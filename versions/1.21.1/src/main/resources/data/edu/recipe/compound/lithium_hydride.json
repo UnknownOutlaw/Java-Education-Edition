@@ -1,0 +1,14 @@
+{
+  "type": "edu:compound",
+  "ingredients": [
+    {
+      "id": "edu:element_3"
+    },
+    {
+      "id": "edu:element_1"
+    }
+  ],
+  "result": {
+    "id": "edu:lithium_hydride"
+  }
+}

@@ -42,6 +42,7 @@ public final class EduItems {
     public static Item HARD_GLASS;
     public static Item SLATE;
     public static Item NPC_SPAWN_EGG;
+    public static Item AGENT_SPAWN_EGG;
     public static Item CAMERA;
     public static Item PORTFOLIO;
     public static Item PHOTO;
@@ -131,6 +132,7 @@ public final class EduItems {
         GUIDE_BOOK = register("guide_book", edu.chemistry.item.GuideBookItem::new, new Item.Properties().stacksTo(1));
         PHOTO = register("photo", edu.chemistry.item.PhotoItem::new, new Item.Properties().stacksTo(1));
         NPC_SPAWN_EGG = register("npc_spawn_egg", edu.chemistry.item.NpcSpawnEggItem::new);
+        AGENT_SPAWN_EGG = register("agent_spawn_egg", edu.chemistry.item.AgentSpawnEggItem::new);
         SLATE = block(EduBlocks.SLATE, new Item.Properties().stacksTo(16));
         POSTER = block(EduBlocks.POSTER, new Item.Properties().stacksTo(16));
         BOARD = block(EduBlocks.BOARD, new Item.Properties().stacksTo(16));

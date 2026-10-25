@@ -1,0 +1,14 @@
+{
+  "type": "edu:compound",
+  "ingredients": [
+    {
+      "id": "edu:element_19"
+    },
+    {
+      "id": "edu:element_53"
+    }
+  ],
+  "result": {
+    "id": "edu:potassium_iodide"
+  }
+}

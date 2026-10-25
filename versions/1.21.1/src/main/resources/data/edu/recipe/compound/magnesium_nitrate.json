@@ -1,0 +1,19 @@
+{
+  "type": "edu:compound",
+  "ingredients": [
+    {
+      "id": "edu:element_12"
+    },
+    {
+      "id": "edu:element_7",
+      "count": 2
+    },
+    {
+      "id": "edu:element_8",
+      "count": 6
+    }
+  ],
+  "result": {
+    "id": "edu:magnesium_nitrate"
+  }
+}

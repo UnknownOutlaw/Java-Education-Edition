@@ -13,7 +13,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-/** Sends a joining player whether Education Edition is on in this world. */
+/** Sends a joining player whether Education Edition is on in this world, and wakes up the player's Agent. */
 @Mixin(PlayerList.class)
 public abstract class PlayerListMixin {
     @Shadow @Final private MinecraftServer server;
@@ -23,5 +23,6 @@ public abstract class PlayerListMixin {
         player.connection.send(EduRules.syncPacket(this.server.getGameRules().get(EduRules.EDUCATION_FEATURES)));
         player.connection.send(EduRules.syncPacket("immutable_world", this.server.getGameRules().get(EduRules.IMMUTABLE_WORLD)));
         player.connection.send(EduRules.syncPacket("world_builder", player.entityTags().contains(edu.chemistry.EduPermissions.WORLD_BUILDER_TAG)));
+        edu.chemistry.agent.Agents.onJoin(player);
     }
 }

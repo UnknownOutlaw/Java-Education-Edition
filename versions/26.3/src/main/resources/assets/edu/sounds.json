@@ -1,0 +1,62 @@
+{
+  "entity.balloon.pop": {
+    "subtitle": "subtitles.edu.balloon.pop",
+    "sounds": [
+      "edu:mob/balloon_pop"
+    ]
+  },
+  "block.element_constructor.open": {
+    "subtitle": "subtitles.edu.element_constructor.open",
+    "sounds": [
+      {
+        "name": "minecraft:block/beacon/activate",
+        "volume": 0.6,
+        "pitch": 1.4
+      }
+    ]
+  },
+  "block.lab_table.product": {
+    "subtitle": "subtitles.edu.lab_table.product",
+    "sounds": [
+      "minecraft:random/pop"
+    ]
+  },
+  "block.lab_table.fizz": {
+    "subtitle": "subtitles.edu.lab_table.fizz",
+    "sounds": [
+      "minecraft:random/fizz"
+    ]
+  },
+  "item.sparkler.active": {
+    "subtitle": "subtitles.edu.sparkler",
+    "sounds": [
+      {
+        "name": "minecraft:random/fizz",
+        "volume": 0.4,
+        "pitch": 2.0
+      }
+    ]
+  },
+  "item.glow_stick.use": {
+    "subtitle": "subtitles.edu.glow_stick",
+    "sounds": [
+      "minecraft:fire/ignite"
+    ]
+  },
+  "entity.ice_bomb.hit": {
+    "subtitle": "subtitles.edu.ice_bomb",
+    "sounds": [
+      "minecraft:random/glass1",
+      "minecraft:random/glass2",
+      "minecraft:random/glass3"
+    ]
+  },
+  "item.camera.take_picture": {
+    "subtitle": "subtitles.edu.camera",
+    "sounds": [
+      "edu:item/camera_snap1",
+      "edu:item/camera_snap2",
+      "edu:item/camera_snap3"
+    ]
+  }
+}

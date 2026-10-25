@@ -1,0 +1,15 @@
+{
+  "replace": false,
+  "values": [
+    "edu:underwater_torch",
+    "edu:underwater_wall_torch",
+    "edu:colored_torch_blue",
+    "edu:colored_torch_red",
+    "edu:colored_torch_purple",
+    "edu:colored_torch_green",
+    "edu:colored_wall_torch_blue",
+    "edu:colored_wall_torch_red",
+    "edu:colored_wall_torch_purple",
+    "edu:colored_wall_torch_green"
+  ]
+}

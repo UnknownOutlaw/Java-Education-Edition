@@ -1,0 +1,12 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "edu:item/balloon",
+    "tints": [
+      {
+        "type": "minecraft:constant",
+        "value": -816214
+      }
+    ]
+  }
+}

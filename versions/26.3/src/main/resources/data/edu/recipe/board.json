@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "P": "edu:poster"
+  },
+  "pattern": [
+    "P",
+    "P"
+  ],
+  "result": {
+    "count": 1,
+    "id": "edu:board"
+  },
+  "group": "edu:chalkboard"
+}

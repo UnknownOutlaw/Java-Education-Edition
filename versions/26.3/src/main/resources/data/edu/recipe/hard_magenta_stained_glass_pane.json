@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "A": "edu:aluminum_oxide",
+    "G": "minecraft:magenta_stained_glass_pane",
+    "B": "edu:boron_trioxide"
+  },
+  "pattern": [
+    "AAA",
+    "GGG",
+    "BBB"
+  ],
+  "result": {
+    "count": 3,
+    "id": "edu:hard_magenta_stained_glass_pane"
+  },
+  "group": "edu:hard_stained_glass_pane"
+}

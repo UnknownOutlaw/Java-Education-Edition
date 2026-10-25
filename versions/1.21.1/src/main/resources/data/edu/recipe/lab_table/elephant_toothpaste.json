@@ -1,0 +1,17 @@
+{
+  "type": "edu:lab_table",
+  "ingredients": [
+    {
+      "id": "edu:soap"
+    },
+    {
+      "id": "edu:potassium_iodide"
+    },
+    {
+      "id": "edu:hydrogen_peroxide"
+    }
+  ],
+  "result": {
+    "id": "edu:garbage"
+  }
+}

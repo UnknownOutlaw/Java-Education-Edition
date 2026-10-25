@@ -1,0 +1,15 @@
+{
+  "type": "edu:compound",
+  "ingredients": [
+    {
+      "id": "edu:element_58"
+    },
+    {
+      "id": "edu:element_17",
+      "count": 3
+    }
+  ],
+  "result": {
+    "id": "edu:cerium_chloride"
+  }
+}

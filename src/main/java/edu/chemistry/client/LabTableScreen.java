@@ -41,13 +41,38 @@ public class LabTableScreen extends EduContainerScreen<LabTableMenu> {
         super(menu, inventory, title, EduMod.id("textures/gui/container/lab_table.png"), 176, 200);
     }
 
+    /**
+     * Console layout: the beaker, flask and jar across the top, the nine ingredient slots in line with the inventory
+     * below them, then Combine and the inventory. (The recipe book is hidden with Legacy4J.)
+     */
+    public static edu.chemistry.client.legacy.StationLayout layout(boolean sd) {
+        var l = new edu.chemistry.client.legacy.StationLayout(sd);
+        int tool = l.s(45);
+        int gap = l.s(24);
+        int x0 = (l.width - (3 * tool + 2 * gap)) / 2;
+        for (int i = 0; i < 3; i++) l.part("tool" + i, x0 + i * (tool + gap), l.s(26), tool, tool);
+        int rowY = l.s(26) + tool + l.s(7);
+        for (int i = 0; i < 9; i++) l.put(i, l.titleX + i * l.slot, rowY, l.slot);
+        int bw = l.s(100);
+        int bh = sd ? 12 : 16;
+        int[] combine = l.part("combine", (l.width - bw) / 2, rowY + l.slot + l.s(5), bw, bh);
+        l.inventory(9, l.titleX, combine[1] + bh + l.s(6));
+        return l;
+    }
+
+    @Override
+    protected edu.chemistry.client.legacy.StationLayout legacyLayout(boolean sd) {
+        return layout(sd);
+    }
+
     @Override
     protected void init() {
         super.init();
-        this.combine = this.addRenderableWidget(Button.builder(Component.translatable("gui.edu.combine"), b -> {
+        int[] b = this.legacy != null ? this.legacy.part("combine") : new int[] {38, 89, 100, 14};
+        this.combine = this.addRenderableWidget(Button.builder(Component.translatable("gui.edu.combine"), btn -> {
             this.sendButton(LabTableMenu.BUTTON_COMBINE);
             this.animTicks = 0;
-        }).bounds(this.leftPos + 38, this.topPos + 89, 100, 14).build());
+        }).bounds(this.leftPos + b[0], this.topPos + b[1], b[2], b[3]).build());
     }
 
     @Override
@@ -63,21 +88,30 @@ public class LabTableScreen extends EduContainerScreen<LabTableMenu> {
         for (int i = 0; i < 3; i++) {
             int x = this.leftPos + TOOLS_X + i * 50 + (i == 2 ? 5 : 0);
             int y = this.topPos + TOOLS_Y;
+            float scale = 1.0F;
+            if (this.legacy != null) {
+                int[] p = this.legacy.part("tool" + i);
+                x = this.leftPos + p[0];
+                y = this.topPos + p[1];
+                scale = p[2] / 45.0F;
+            }
             if (this.animTicks >= 0) {
                 // 10 fps flip book, like Bedrock
                 int frame = Math.min(FRAMES[i] - 1, (int) ((this.animTicks + a) / 2.0F));
                 Identifier tex = EduMod.id("textures/gui/lab/" + TOOLS[i] + "_active.png");
-                graphics.blit(RenderPipelines.GUI_TEXTURED, tex, x, y, frame * 45.0F, 0.0F, 45, 45, FRAMES[i] * 45, 45);
+                scaledBlit(graphics, tex, x, y, frame * 45.0F, 0.0F, 45, 45, FRAMES[i] * 45, 45, scale);
             } else {
                 Identifier tex = EduMod.id("textures/gui/lab/" + TOOLS[i] + "_default.png");
-                graphics.blit(RenderPipelines.GUI_TEXTURED, tex, x, y, 0.0F, 0.0F, 45, 45, 45, 45);
+                scaledBlit(graphics, tex, x, y, 0.0F, 0.0F, 45, 45, 45, 45, scale);
             }
         }
     }
 
     @Override
     protected void extractLabels(GuiGraphicsExtractor graphics, int mouseX, int mouseY) {
-        this.drawTitle(graphics);
-        graphics.text(this.font, this.playerInventoryTitle, this.inventoryLabelX, this.inventoryLabelY, TITLE_COLOR, false);
+        this.labels(() -> {
+            this.drawTitle(graphics);
+            graphics.text(this.font, this.playerInventoryTitle, this.inventoryLabelX, this.inventoryLabelY, this.labelColor(), false);
+        });
     }
 }

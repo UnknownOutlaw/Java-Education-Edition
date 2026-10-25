@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": "minecraft:glass_bottle",
+    "I": "minecraft:iron_ingot"
+  },
+  "pattern": [
+    "BBB",
+    "III",
+    "I I"
+  ],
+  "result": {
+    "count": 1,
+    "id": "edu:lab_table"
+  }
+}

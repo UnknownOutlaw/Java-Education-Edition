@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "M": {
+      "item": "edu:element_12"
+    },
+    "T": {
+      "item": "minecraft:torch"
+    }
+  },
+  "pattern": [
+    "M",
+    "T"
+  ],
+  "result": {
+    "count": 1,
+    "id": "edu:underwater_torch"
+  }
+}

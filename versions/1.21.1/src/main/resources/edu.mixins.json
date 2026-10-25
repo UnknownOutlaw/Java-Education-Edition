@@ -1,0 +1,52 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "edu.chemistry.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "BoatBalloonMixin",
+    "PotionBrewingMixin",
+    "ServerPlayerGameModeMixin",
+    "ShapedRecipeMixin",
+    "ShapelessRecipeMixin",
+    "MinecraftServerMixin",
+    "PlayerListMixin",
+    "ServerGamePacketListenerMixin",
+    "BlockItemMixin",
+    "PlayerMixin",
+    "EntityBorderMixin",
+    "CommandsMixin",
+    "LeashFenceKnotMixin",
+    "CommandSourceStackAccessor",
+    "StructureTemplatePoolMixin",
+    "CustomPayloadCodecMixin",
+    "LivingEntityDeathMixin",
+    "ServerPlayerDeathMixin",
+    "BowItemMixin",
+    "PressurePlateBlockMixin"
+  ],
+  "client": [
+    "CreativeScreenMixin",
+    "CreateWorldGameTabMixin",
+    "ClientPacketListenerMixin",
+    "ItemInHandRendererMixin",
+    "ItemFramePhotoMixin",
+    "ClientLevelMixin",
+    "GameRendererMixin",
+    "LevelRendererMixin",
+    "GuiMixin",
+    "MinecraftFrameMixin",
+    "MultiPlayerGameModeMixin",
+    "KeyBindsScreenMixin",
+    "LegacyKeyMappingScreenMixin",
+    "WorldMoreOptionsScreenMixin",
+    "GuiAccessor",
+    "SubtitleOverlayAccessor",
+    "OptionsMixin",
+    "ItemColorsMixin",
+    "ItemRendererGlowMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

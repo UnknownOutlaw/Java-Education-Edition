@@ -26,4 +26,12 @@ public abstract class BlockItemMixin {
             cir.setReturnValue(InteractionResult.FAIL);
         }
     }
+
+    /** a block the player placed, for MakeCode's "on block placed" */
+    @Inject(method = "place", at = @At("RETURN"))
+    private void edu$blockPlaced(BlockPlaceContext context, CallbackInfoReturnable<InteractionResult> cir) {
+        if (cir.getReturnValue().consumesAction() && context.getPlayer() instanceof net.minecraft.server.level.ServerPlayer player) {
+            edu.chemistry.code.CodeEvents.blockPlaced(player, context.getLevel().getBlockState(context.getClickedPos()));
+        }
+    }
 }

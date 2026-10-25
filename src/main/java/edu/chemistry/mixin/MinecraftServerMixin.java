@@ -15,6 +15,14 @@ public abstract class MinecraftServerMixin {
     @Inject(method = "<init>", at = @At("TAIL"))
     private void edu$addChemistLabs(CallbackInfo ci) {
         edu.chemistry.world.EduVillages.addHouses((MinecraftServer) (Object) this);
+        edu.chemistry.agent.Agents.reset();
+        edu.chemistry.code.CodeConnection.reset();
+    }
+
+    /** Code Builder: answers that wait for the Agent's step, and movement events */
+    @Inject(method = "tickServer", at = @At("TAIL"))
+    private void edu$codeBuilderTick(java.util.function.BooleanSupplier hasTime, CallbackInfo ci) {
+        edu.chemistry.code.CodeConnection.tick((MinecraftServer) (Object) this);
     }
 
     @Inject(method = "onGameRuleChanged", at = @At("TAIL"))

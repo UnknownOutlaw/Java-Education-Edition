@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "C": {
+      "item": "edu:cerium_chloride"
+    },
+    "M": {
+      "item": "edu:element_12"
+    },
+    "S": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    "C",
+    "M",
+    "S"
+  ],
+  "result": {
+    "count": 1,
+    "id": "edu:sparkler_blue"
+  },
+  "group": "edu:sparkler"
+}

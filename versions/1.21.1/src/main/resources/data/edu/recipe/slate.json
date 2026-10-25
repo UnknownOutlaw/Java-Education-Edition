@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "G": {
+      "item": "minecraft:green_terracotta"
+    },
+    "P": {
+      "tag": "minecraft:planks"
+    },
+    "S": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    "GGG",
+    "PPP",
+    "S S"
+  ],
+  "result": {
+    "count": 1,
+    "id": "edu:slate"
+  },
+  "group": "edu:chalkboard"
+}

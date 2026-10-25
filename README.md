@@ -4,11 +4,11 @@
 
 <h1 align="center">Education Edition</h1>
 
-<p align="center"><b>Brings Education Edition to Java.</b></p>
+<p align="center"><b>Minecraft Education's chemistry and classroom features, on Java Edition.</b></p>
 
 <p align="center">
   <img src="https://img.shields.io/badge/Minecraft-26.1.2%20%7C%2026.3%20%7C%201.21.1-62B47A" alt="Minecraft 26.1.2 | 26.3 | 1.21.1">
-  <img src="https://img.shields.io/badge/Version-2.0.1-8A6FD1" alt="Version 2.0.1">
+  <img src="https://img.shields.io/badge/Version-2.2.0-8A6FD1" alt="Version 2.2.0">
   <img src="https://img.shields.io/badge/Loader-Fabric-DBD0B4" alt="Fabric">
   <img src="https://img.shields.io/badge/JEI-optional-4A90D9" alt="JEI optional">
   <img src="https://img.shields.io/badge/License-MIT-blue" alt="MIT License">
@@ -16,11 +16,26 @@
 
 ---
 
-The chemistry and classroom content from Minecraft: Education Edition is some of the coolest stuff Minecraft has ever had, but it's been stuck on Bedrock, or behind a school login. This mod brings it over to Java on Fabric, kept as close to the original as possible, down to the creative menu order.
+The chemistry and classroom content from Minecraft Education is some of the coolest stuff Minecraft has ever had, but it's been stuck on Bedrock, or behind a school login. This mod brings it over to Java on Fabric, kept as close to the original as possible, down to the creative menu order.
 
-Version **2.0.1** runs on **Minecraft 26.1.2, 26.3 and 1.21.1**.
+Version **2.2.0** runs on **Minecraft 26.1.2, 26.3 and 1.21.1**, and adds **the Agent** and **Code Builder**.
 
 ## Features
+
+### The Agent
+Your own robot helper, just like in Education. Place it with the **Agent Spawn Egg** (it turns to face you) or use `/agent create`. Every player gets their own Agent, and right-clicking it opens its 27-slot inventory.
+
+- Control it with `/agent` commands: **move, turn, destroy, place, till, attack, collect, drop, dropall** and **transfer**. Ask it about the world with **detect, detectredstone, inspect, getitemcount, getitemdetail** and **getposition**.
+- It presses pressure plates, sets off tripwires and travels through nether portals, end portals and end gateways. `/agent tp` brings it back from anywhere, even another dimension.
+- It keeps the area around it loaded while its owner is online, so it keeps working even far away.
+
+### Code Builder
+Press **C** to open **MakeCode for Minecraft** in your web browser, connected to your world. Code with blocks, JavaScript or Python, press Run, and watch it happen in game.
+
+- Programs can move and use the Agent, place and fill blocks, summon mobs, give items, teleport, and change the time, weather and game rules.
+- They can react to chat commands, blocks broken or placed, mobs killed, arrows shot, pictures taken and more.
+- The world's host and World Builders can use operator commands from Code Builder, even in a world without cheats, like in Education.
+- Code Builder needs an internet connection. Your projects are saved in your browser.
 
 ### Chemistry
 - **Element Constructor:** build any of the 118 elements by setting protons, neutrons and electrons. Change the neutrons to make isotopes.
@@ -37,9 +52,9 @@ Everything you make with chemistry: balloons, glow sticks, sparklers, colored to
 - **Medicines** (Antidote, Elixir, Eye Drops and Tonic) are brewed in a regular brewing stand.
 
 ### Classroom tools
-- **Chalkboards:** Slates, Posters and Boards to write on, on a wall or standing on legs. The text looks like it does in Education Edition. World Builders can lock a board so only they can edit it, and boards a World Builder places can only be broken by World Builders.
-- **Camera and Portfolio:** take pictures in-game or set the camera up on its tripod for a selfie. The pictures go into your portfolio, where you can caption them, export them all as a PDF, or turn them into photo items. A photo is held like a map, showing its picture, and fills an item frame the way a map does.
-- **NPCs:** place characters with names and dialogue around your world. They turn to watch you when you get close.
+- **Chalkboards:** Slates, Posters and Boards to write on, on a wall or standing on legs. The text looks like it does in Education. World Builders can lock a board so only they can edit it, and boards a World Builder places can only be broken by World Builders.
+- **Camera and Portfolio:** take pictures in game, or set the camera up on its tripod for a selfie. The pictures go into your portfolio, where you can caption them, export them all as a PDF, or turn them into photo items. A photo is held like a map and fills an item frame the way a map does.
+- **NPCs:** place characters with names, dialogue and buttons that run commands. They turn to watch you when you get close, and they press pressure plates, set off tripwires and go through portals like mobs do.
 - **Allow, Deny and Border blocks:** control where people can build and where they can go.
 
 ### Chemist villager
@@ -48,22 +63,22 @@ A villager without a job who finds a Lab Table becomes a **Chemist**. Chemists w
 Villages can generate a **Chemist's lab**, with its own design for each village type: plains, desert, savanna, snowy and taiga. Each lab comes with a Lab Table, a loot chest of chemistry supplies and a villager to move in.
 
 ### Control tips
-Education Edition's on-screen control tips, using your own key bindings:
+Education's on-screen control tips, using your own key bindings:
 - **Right side:** what your buttons do right now (Place, Mine, Attack, Trade, Eat, Drop and so on). The list follows what you're looking at and holding, and moves up out of the way of closed captions.
-- **Left side:** press **H** to open a panel of the movement and menu keys, and number every hotbar slot with its key. Press **H** again to hide it.
+- **Left side:** press **H** to open a panel of the movement and menu keys, including the Code Builder key, and number every hotbar slot with its key. Press **H** again to hide it.
 
-Control tips can be switched off with the **Control Tips** toggle in **Options → Controls → Key Binds** (with ReConsole: **Help & Options → Controls → Key Binds**). The H key can be rebound there, under **Miscellaneous**.
+Control tips can be switched off with the **Control Tips** toggle in **Options → Controls → Key Binds**. The H and C keys can be rebound there, under **Miscellaneous**.
 
 ### Chemistry Guide
-Craft the guide book with a **book** and a **glass bottle**. It's an in-game book with every recipe in the mod, with pictures, and explains how the stations and classroom tools work. Bookmarks on the side jump to each chapter.
+Craft the guide book with a **book** and a **glass bottle**. It's an in-game book with every recipe in the mod, with pictures, and explains how the stations, classroom tools, the Agent and Code Builder work. Bookmarks on the side jump to each chapter.
 
 ## Turning it on
 Everything in the mod is tied to a world setting, like Bedrock's Education Edition toggle. It's off by default.
 
-- **New worlds:** switch on **Education Edition** in the **Game** tab of the world creation screen (with ReConsole: **More Options → Game Options**, under Host Privileges).
+- **New worlds:** switch on **Education Edition** in the **Game** tab of the world creation screen.
 - **Existing worlds:** run `/gamerule edu:education_features true`.
 
-While it's off, the Education Edition creative tab is hidden, labs don't generate in villages and control tips don't show.
+While it's off, the Education Edition creative tab is hidden, labs don't generate in villages, and control tips, the Agent and Code Builder don't work.
 
 ## World Builder
 | Command | What it does |
@@ -98,7 +113,8 @@ Only the world's host can use World Builder commands, or owner-level operators o
 | Fabric API | any | any for 1.21.1 |
 | Java | 25 | 21 |
 | JEI | optional | optional (a recent JEI 19 version) |
-| ReConsole / Legacy4J | optional | optional |
+
+On 1.21.1, blocks and mobs added to Minecraft after that version can't be used from Code Builder, because they don't exist there.
 
 ## Building from source
 You need **JDK 25** (Minecraft 26.1 runs on Java 25). Then, from the project folder:
@@ -111,20 +127,25 @@ The jars end up in `build/libs`:
 - `education-edition-<version>+26.1.2.jar` is the mod without the JEI plugin.
 - `education-edition-<version>+26.1.2-jei.jar` is the same mod with the JEI plugin.
 
-The mod's version number is set in `gradle.properties`.
+The mod's version number is set in `gradle.properties`. The Gradle project builds the 26.1.2 version; the 26.3 and 1.21.1 sources are in `versions/` (see [versions/README.md](versions/README.md)).
 
 ### Project layout
 | Path | What's there |
 | --- | --- |
 | `src/main/java/edu/chemistry` | The mod's code: blocks, items, entities, screens and mixins |
+| `src/main/java/edu/chemistry/agent` | The Agent and its `/agent` commands |
+| `src/main/java/edu/chemistry/code` | Code Builder in the world: MakeCode's messages, Bedrock commands and game events |
+| `src/main/java/edu/chemistry/client/code` | Code Builder on your computer: the C key and the local server the MakeCode editor talks to |
 | `src/main/java/edu/chemistry/compat/jei` | The JEI plugin (left out of the plain jar) |
 | `src/main/resources/assets/edu` | Textures, models, sounds, language and the guide book |
 | `src/main/resources/data/edu` | Recipes, loot tables, tags, advancements, villager trades and the village labs |
+| `versions/26.3` | The same mod for Minecraft 26.3 |
+| `versions/1.21.1` | The same mod for Minecraft 1.21.1 |
 
 ## License
 The mod's code is licensed under the [MIT License](LICENSE).
 
-This is a fan port and isn't affiliated with Mojang or Microsoft. The original Minecraft textures, sounds and other assets belong to Mojang and aren't covered by the MIT license.
+This is a fan port and isn't affiliated with Mojang or Microsoft. The original Minecraft textures, sounds and other assets belong to Mojang and aren't covered by the MIT license. Code Builder opens Microsoft's MakeCode for Minecraft website, which isn't part of the mod.
 
 ## Bugs and suggestions
-Found a bug or something that doesn't match Education Edition? Open an [issue](../../issues). The mod is still being worked on.
+Found a bug or something that doesn't match Education? Open an [issue](../../issues). The mod is still being worked on.

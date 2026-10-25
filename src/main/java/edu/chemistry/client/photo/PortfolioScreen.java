@@ -172,26 +172,43 @@ public class PortfolioScreen extends Screen {
         mc.getConnection().send(new ServerboundSignUpdatePacket(BlockPos.ZERO, true, l[0], l[1], l[2], l[3]));
     }
 
+    /**
+     * The clearest copies a photo item can carry, tried in turn until one fits in {@link Photos#MAX_BYTES}: JPEGs as
+     * big as the picture itself (up to 1024 pixels), so the photo looks the same as the picture in the portfolio.
+     */
+    private static final int[][] PHOTO_ITEM_COPIES = {{1024, 92}, {768, 92}, {640, 90}, {512, 88}, {512, 80}, {384, 80}};
+
     /** turns a portfolio picture into a photo item in your inventory (and takes it out of the portfolio) */
     private void toPhotoItem(PortfolioStore.Photo p) {
-        try (var img = com.mojang.blaze3d.platform.NativeImage.read(this.store.bytes(p))) {
-            // photo items carry a smaller copy so they stay light to send around
-            int w = Math.min(320, img.getWidth());
-            int h = Math.max(1, Math.round(img.getHeight() * (w / (float) img.getWidth())));
-            byte[] png;
-            try (var small = new com.mojang.blaze3d.platform.NativeImage(w, h, false)) {
-                img.resizeSubRectTo(0, 0, img.getWidth(), img.getHeight(), small);
-                Path tmp = java.nio.file.Files.createTempFile("edu_photo", ".png");
-                small.writeToFile(tmp);
-                png = java.nio.file.Files.readAllBytes(tmp);
-                java.nio.file.Files.deleteIfExists(tmp);
+        try (var img = PhotoCodec.decode(this.store.bytes(p))) {
+            byte[] data = photoItemCopy(img);
+            if (data == null) {
+                EduMod.LOG.warn("Couldn't make a photo item: the picture is too big to carry");
+                return;
             }
-            for (String[] lines : PhotoNetwork.encodeUpload(p.id, png, p.caption)) send(lines);
+            for (String[] lines : PhotoNetwork.encodeUpload(p.id, data, p.caption)) send(lines);
             this.store.remove(p);
             this.rebuildWidgets();
         } catch (IOException e) {
             EduMod.LOG.warn("Couldn't make a photo item", e);
         }
+    }
+
+    /** the picture a photo item carries: the clearest JPEG that fits (or a small PNG if this Java can't write JPEGs) */
+    private static byte @org.jspecify.annotations.Nullable [] photoItemCopy(com.mojang.blaze3d.platform.NativeImage img) throws IOException {
+        try {
+            for (int[] copy : PHOTO_ITEM_COPIES) {
+                byte[] jpeg = PhotoCodec.jpeg(img, copy[0], copy[1] / 100.0F);
+                if (jpeg.length <= Photos.MAX_BYTES) return jpeg;
+            }
+        } catch (IOException e) {
+            EduMod.LOG.warn("Couldn't write a JPEG photo; saving a smaller PNG instead", e);
+        }
+        for (int size : new int[] {256, 128}) {
+            byte[] png = PhotoCodec.png(img, size);
+            if (png.length <= Photos.MAX_BYTES) return png;
+        }
+        return null;
     }
 
     private void export() {

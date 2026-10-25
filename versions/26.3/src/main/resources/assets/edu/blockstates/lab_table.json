@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "edu:block/lab_table"
+    },
+    "facing=east": {
+      "model": "edu:block/lab_table",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "edu:block/lab_table",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "edu:block/lab_table",
+      "y": 270
+    }
+  }
+}

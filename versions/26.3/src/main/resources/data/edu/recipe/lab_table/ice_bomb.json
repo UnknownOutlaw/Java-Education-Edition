@@ -1,0 +1,12 @@
+{
+  "type": "edu:lab_table",
+  "ingredients": [
+    {
+      "id": "edu:sodium_acetate",
+      "count": 4
+    }
+  ],
+  "result": {
+    "id": "edu:ice_bomb"
+  }
+}

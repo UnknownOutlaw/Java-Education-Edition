@@ -1,0 +1,15 @@
+{
+  "type": "edu:compound",
+  "ingredients": [
+    {
+      "id": "edu:element_74"
+    },
+    {
+      "id": "edu:element_17",
+      "count": 6
+    }
+  ],
+  "result": {
+    "id": "edu:tungsten_chloride"
+  }
+}

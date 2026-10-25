@@ -1,0 +1,16 @@
+{
+  "type": "edu:lab_table",
+  "ingredients": [
+    {
+      "id": "edu:water",
+      "count": 3
+    },
+    {
+      "id": "edu:sodium_hypochlorite",
+      "count": 3
+    }
+  ],
+  "result": {
+    "id": "edu:bleach"
+  }
+}

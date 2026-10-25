@@ -19,6 +19,11 @@ import net.minecraft.world.item.ItemStack;
  */
 public final class EduTabs {
     public static CreativeModeTab CHEMISTRY;
+    /**
+     * Legacy4J's console creative menu is in use: it gets one tab per category instead (see LegacyCreative), so this
+     * tab keeps its items in search only
+     */
+    public static volatile boolean consoleCreative;
 
     public record Category(String key, Supplier<Item> icon, Supplier<List<Item>> items) {
         public Component title() {
@@ -81,7 +86,8 @@ public final class EduTabs {
 
     public static void init() {
         CATEGORIES.add(new Category("education", () -> EduItems.SLATE, () -> list(EduItems.BORDER, EduItems.ALLOW, EduItems.DENY,
-            EduItems.SLATE, EduItems.POSTER, EduItems.BOARD, EduItems.CAMERA, EduItems.PORTFOLIO, EduItems.NPC_SPAWN_EGG)));
+            EduItems.SLATE, EduItems.POSTER, EduItems.BOARD, EduItems.CAMERA, EduItems.PORTFOLIO, EduItems.NPC_SPAWN_EGG,
+            EduItems.AGENT_SPAWN_EGG)));
         CATEGORIES.add(new Category("lab", () -> EduItems.ELEMENT_CONSTRUCTOR, () -> list(EduItems.ELEMENT_CONSTRUCTOR,
             EduItems.COMPOUND_CREATOR, EduItems.LAB_TABLE, EduItems.MATERIAL_REDUCER, EduItems.GUIDE_BOOK)));
         CATEGORIES.add(new Category("elements", () -> EduItems.ELEMENTS[1], () -> list((Object) EduItems.ELEMENTS)));
@@ -91,10 +97,15 @@ public final class EduTabs {
         CreativeModeTab.Builder builder = fabricBuilder();
         Object generator = Reflect.implement(CreativeModeTab.DisplayItemsGenerator.class, "accept", args -> {
             Class<?> outputClass = Reflect.cls(CreativeModeTab.class, "net.minecraft.world.item.CreativeModeTab$Output");
-            Method add = Reflect.method(outputClass, "accept", ItemStack.class);
+            // the visibility enum is protected, so it's looked up by name
+            Class<?> visibilityClass = Reflect.cls(CreativeModeTab.class, "net.minecraft.world.item.CreativeModeTab$TabVisibility");
+            Method add = Reflect.method(outputClass, "accept", ItemStack.class, visibilityClass);
             // like Bedrock, the tab (and the items in search) only show up in worlds with Education Edition turned on
             if (!edu.chemistry.EduRules.clientEnabled) return null;
-            for (Item item : allItems()) Reflect.invoke(add, args[1], new ItemStack(item));
+            String wanted = consoleCreative ? "SEARCH_TAB_ONLY" : "PARENT_AND_SEARCH_TABS";
+            Object visibility = null;
+            for (Object v : visibilityClass.getEnumConstants()) if (((Enum<?>) v).name().equals(wanted)) visibility = v;
+            for (Item item : allItems()) Reflect.invoke(add, args[1], new ItemStack(item), visibility);
             return null;
         });
         CHEMISTRY = builder
@@ -103,6 +114,17 @@ public final class EduTabs {
             .displayItems((CreativeModeTab.DisplayItemsGenerator) generator)
             .build();
         Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, EduMod.id("chemistry"), CHEMISTRY);
+    }
+
+    /** makes the creative screen rebuild its tabs (and search) next time it opens */
+    public static void refresh() {
+        try {
+            java.lang.reflect.Field cached = net.minecraft.world.item.CreativeModeTabs.class.getDeclaredField("CACHED_PARAMETERS");
+            cached.setAccessible(true);
+            cached.set(null, null);
+        } catch (ReflectiveOperationException e) {
+            EduMod.LOG.warn("Couldn't refresh the creative tabs", e);
+        }
     }
 
     /** Fabric API's builder gives the tab its own page; fall back to a plain vanilla builder if it's missing. */

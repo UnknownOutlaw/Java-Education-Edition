@@ -1,0 +1,15 @@
+{
+  "type": "edu:compound",
+  "ingredients": [
+    {
+      "id": "edu:element_1",
+      "count": 2
+    },
+    {
+      "id": "edu:element_8"
+    }
+  ],
+  "result": {
+    "id": "edu:water"
+  }
+}

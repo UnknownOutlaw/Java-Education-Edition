@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "waterlogged=true": {
+      "model": "edu:block/underwater_torch"
+    },
+    "waterlogged=false": {
+      "model": "edu:block/underwater_torch"
+    }
+  }
+}

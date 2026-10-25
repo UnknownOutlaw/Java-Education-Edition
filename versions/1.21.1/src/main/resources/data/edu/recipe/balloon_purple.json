@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "X": {
+      "item": "edu:latex"
+    },
+    "D": {
+      "item": "minecraft:purple_dye"
+    },
+    "H": {
+      "item": "edu:element_2"
+    },
+    "L": {
+      "item": "minecraft:lead"
+    }
+  },
+  "pattern": [
+    "XDX",
+    "XHX",
+    "XLX"
+  ],
+  "result": {
+    "count": 1,
+    "id": "edu:balloon_purple"
+  },
+  "group": "edu:balloon"
+}

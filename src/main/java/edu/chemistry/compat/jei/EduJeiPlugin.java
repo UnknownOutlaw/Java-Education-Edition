@@ -197,6 +197,7 @@ public class EduJeiPlugin implements IModPlugin {
         info(registration, EduItems.DENY, "deny");
         info(registration, EduItems.BORDER, "border");
         info(registration, EduItems.NPC_SPAWN_EGG, "npc");
+        info(registration, EduItems.AGENT_SPAWN_EGG, "agent");
         info(registration, EduItems.CAMERA, "camera");
         info(registration, EduItems.PORTFOLIO, "portfolio");
     }

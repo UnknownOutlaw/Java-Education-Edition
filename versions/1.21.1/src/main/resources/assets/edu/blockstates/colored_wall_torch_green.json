@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "edu:block/colored_wall_torch_green"
+    },
+    "facing=north": {
+      "model": "edu:block/colored_wall_torch_green",
+      "y": 270
+    },
+    "facing=south": {
+      "model": "edu:block/colored_wall_torch_green",
+      "y": 90
+    },
+    "facing=west": {
+      "model": "edu:block/colored_wall_torch_green",
+      "y": 180
+    }
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_sodium_hypochlorite": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "edu:sodium_hypochlorite"
+          }
+        ]
+      }
+    },
+    "has_water": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "edu:water"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "edu:lab_table/bleach"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_sodium_hypochlorite",
+      "has_the_recipe",
+      "has_water"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "edu:lab_table/bleach"
+    ]
+  }
+}

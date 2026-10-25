@@ -48,6 +48,7 @@ public abstract class CommandsMixin {
                     .then(Commands.argument("value", BoolArgumentType.bool())
                         .executes(ctx -> edu$apply(ctx, EntityArgument.getPlayers(ctx, "targets"), BoolArgumentType.getBool(ctx, "value"))))));
         }
+        edu.chemistry.agent.AgentCommand.register(this.dispatcher, context);
     }
 
     @Unique

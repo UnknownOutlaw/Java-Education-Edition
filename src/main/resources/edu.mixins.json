@@ -18,23 +18,33 @@
     "CommandsMixin",
     "LeashFenceKnotMixin",
     "CommandSourceStackAccessor",
-    "StructureTemplatePoolMixin"
+    "StructureTemplatePoolMixin",
+    "CustomPayloadCodecMixin",
+    "LivingEntityDeathMixin",
+    "ServerPlayerDeathMixin",
+    "BowItemMixin",
+    "PressurePlateBlockMixin"
   ],
   "client": [
     "CreativeScreenMixin",
     "CreateWorldGameTabMixin",
     "ClientPacketListenerMixin",
     "ItemInHandRendererMixin",
+    "ItemFrameRenderStateMixin",
+    "ItemFramePhotoMixin",
     "ClientLevelMixin",
     "GameRendererMixin",
     "LevelRendererMixin",
     "GuiMixin",
     "MinecraftFrameMixin",
     "MultiPlayerGameModeMixin",
-    "ControlsScreenMixin",
+    "KeyBindsScreenMixin",
+    "LegacyKeyMappingScreenMixin",
+    "WorldMoreOptionsScreenMixin",
     "GuiAccessor",
     "SubtitleOverlayAccessor",
-    "OptionsMixin"
+    "OptionsMixin",
+    "ContainerScreenSizeAccessor"
   ],
   "injectors": {
     "defaultRequire": 1

@@ -1829,7 +1829,7 @@
   },
   {
    "title": "Classroom",
-   "text": "Tools for building lessons and adventure maps: chalkboards, permission blocks, World Builder, NPCs, and the Camera and Portfolio.",
+   "text": "Tools for building lessons and adventure maps: chalkboards, permission blocks, World Builder, NPCs, the Agent and Code Builder, and the Camera and Portfolio.",
    "chapter": true,
    "icon": "edu:slate",
    "section": 6
@@ -1966,6 +1966,31 @@
      "id": "edu:npc_spawn_egg"
     }
    ],
+   "section": 6
+  },
+  {
+   "title": "The Agent",
+   "text": "A robot that follows your /agent commands, one block at a time. Get yours with its spawn egg or /agent create (everyone has one). Right-click it for its inventory.",
+   "show": [
+    {
+     "id": "edu:agent_spawn_egg"
+    }
+   ],
+   "section": 6
+  },
+  {
+   "title": "Agent Commands",
+   "text": "/agent move, destroy, place, till, attack and dropall take a direction: forward, back, left, right, up or down. /agent turn left or right.\n\nPlace and drop take a slot (1-27) first. /agent collect all picks up items nearby.",
+   "section": 6
+  },
+  {
+   "title": "Asking the Agent",
+   "text": "/agent detect, inspect and inspectdata check the block in a direction. getitemcount, getitemspace and getitemdetail check a slot. getposition says where it is.\n\nIn command blocks, run them with /execute as a player.",
+   "section": 6
+  },
+  {
+   "title": "Code Builder",
+   "text": "Press C to open MakeCode in your web browser, linked to this world (it needs the internet). Code with blocks, JavaScript or Python, then press Run.\n\nPrograms can move the Agent, build and answer chat commands.",
    "section": 6
   },
   {

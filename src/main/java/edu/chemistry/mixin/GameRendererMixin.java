@@ -14,6 +14,8 @@ public abstract class GameRendererMixin {
     @Inject(method = "update", at = @At("HEAD"))
     private void edu$startFrame(DeltaTracker deltaTracker, boolean advanceGameTime, CallbackInfo ci) {
         PictureTaker.beforeFrame();
+        // with Legacy4J (ReConsole): the console creative tabs
+        edu.chemistry.client.legacy.LegacyCreative.sync();
     }
 
     /**

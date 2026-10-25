@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "top": "edu:block/underwater_tnt_top",
+    "side": "edu:block/underwater_tnt_side",
+    "bottom": "edu:block/underwater_tnt_bottom"
+  }
+}

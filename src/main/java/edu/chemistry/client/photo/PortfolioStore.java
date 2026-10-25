@@ -140,7 +140,14 @@ public final class PortfolioStore {
         String id = newId();
         try {
             Files.createDirectories(this.dir);
-            Files.write(this.file(id), png);
+            byte[] file;
+            try {
+                // photo items carry JPEGs; the portfolio keeps PNGs
+                file = PhotoCodec.toPng(png);
+            } catch (IOException e) {
+                file = png;
+            }
+            Files.write(this.file(id), file);
         } catch (IOException e) {
             return null;
         }
@@ -183,12 +190,23 @@ public final class PortfolioStore {
         return s == null ? new int[] {16, 9} : s;
     }
 
+    /** pictures are loaded for screens at most this many pixels across (the file keeps its full size for export) */
+    private static final int DISPLAY_MAX = 512;
+
     /** registers PNG bytes as a texture under {@code key} (reused if it already exists) */
     public static @Nullable Identifier register(String key, byte[] png) {
         Identifier tex = TEXTURES.get(key);
         if (tex != null) return tex;
         try {
-            NativeImage img = NativeImage.read(png);
+            NativeImage img = PhotoCodec.decode(png);
+            int longest = Math.max(img.getWidth(), img.getHeight());
+            if (longest > DISPLAY_MAX) {
+                float scale = DISPLAY_MAX / (float) longest;
+                NativeImage small = new NativeImage(Math.max(1, Math.round(img.getWidth() * scale)), Math.max(1, Math.round(img.getHeight() * scale)), false);
+                img.resizeSubRectTo(0, 0, img.getWidth(), img.getHeight(), small);
+                img.close();
+                img = small;
+            }
             tex = EduMod.id("portfolio/" + Integer.toHexString(key.hashCode()) + "_" + TEXTURES.size());
             SIZES.put(tex.toString(), new int[] {img.getWidth(), img.getHeight()});
             Minecraft.getInstance().getTextureManager().register(tex, new DynamicTexture(() -> "edu photo", img));

@@ -1,0 +1,14 @@
+{
+  "type": "edu:lab_table",
+  "ingredients": [
+    {
+      "id": "edu:element_12"
+    },
+    {
+      "id": "edu:salt"
+    }
+  ],
+  "result": {
+    "id": "edu:magnesium_salts"
+  }
+}

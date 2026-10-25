@@ -7,8 +7,8 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.CustomData;
 
 /**
- * Photo items carry their picture with them (a small PNG in the item's custom data), so a photo can be given to other
- * players, put in chests and added to anyone's portfolio.
+ * Photo items carry their picture with them (a JPEG, or a PNG for photos saved before 1.0.122, in the item's custom
+ * data), so a photo can be given to other players, put in chests and added to anyone's portfolio.
  */
 public final class Photos {
     public static final String KEY_IMAGE = "edu_photo";
@@ -36,6 +36,16 @@ public final class Photos {
 
     public static String caption(ItemStack stack) {
         return tag(stack).getStringOr(KEY_CAPTION, "");
+    }
+
+    /** whether these bytes look like a PNG */
+    public static boolean isPng(byte[] b) {
+        return b.length > 8 && b[0] == (byte) 0x89 && b[1] == 'P' && b[2] == 'N' && b[3] == 'G';
+    }
+
+    /** whether these bytes look like a JPEG */
+    public static boolean isJpeg(byte[] b) {
+        return b.length > 4 && b[0] == (byte) 0xFF && b[1] == (byte) 0xD8 && b[2] == (byte) 0xFF;
     }
 
     public static String id(ItemStack stack) {

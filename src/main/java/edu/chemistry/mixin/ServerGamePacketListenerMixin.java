@@ -12,7 +12,10 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-/** Chalkboard edits travel in the sign-update packet (see {@link ChalkboardEdit}); this hands them to the chalkboard. */
+/**
+ * Chalkboard edits travel in the sign-update packet (see {@link ChalkboardEdit}); this hands them to the chalkboard.
+ * Code Builder packets and chat messages go to Code Builder.
+ */
 @Mixin(ServerGamePacketListenerImpl.class)
 public abstract class ServerGamePacketListenerMixin {
     @Shadow
@@ -25,6 +28,21 @@ public abstract class ServerGamePacketListenerMixin {
             || edu.chemistry.photo.PhotoNetwork.handle(this.player, packet.getPos(), raw)) {
             ci.cancel();
         }
+    }
+
+    /** Code Builder packets from the player's MakeCode editor, handled on the server thread */
+    @Inject(method = "handleCustomPayload", at = @At("HEAD"), cancellable = true)
+    private void edu$codeBuilder(net.minecraft.network.protocol.common.ServerboundCustomPayloadPacket packet, CallbackInfo ci) {
+        if (!(packet.payload() instanceof edu.chemistry.code.CodePayload code)) return;
+        ServerPlayer player = this.player;
+        player.level().getServer().execute(() -> edu.chemistry.code.CodeConnection.receive(player, code.json()));
+        ci.cancel();
+    }
+
+    /** chat is how MakeCode's chat commands start */
+    @Inject(method = "broadcastChatMessage", at = @At("HEAD"))
+    private void edu$chatCommand(net.minecraft.network.chat.PlayerChatMessage message, CallbackInfo ci) {
+        edu.chemistry.code.CodeEvents.chat(this.player, message.signedContent());
     }
 
     /** players who joined the world can't put World Builder commands in command blocks (or command block minecarts) */

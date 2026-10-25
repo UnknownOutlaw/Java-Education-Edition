@@ -15,10 +15,16 @@ import java.util.zip.DeflaterOutputStream;
 /**
  * "Export Portfolio": writes every picture and its caption to a PDF, two pictures to a page like the portfolio's
  * spreads. Plain PDF 1.4 written by hand (pictures as compressed RGB images, captions in Helvetica).
+ * <p>
+ * Pictures stay sharp: a small picture is enlarged by a whole number with each pixel copied as a block (at least
+ * {@link #SHARP_SIZE} pixels across), so PDF viewers and printers don't smooth it into a blur, and the images are marked
+ * not to be smoothed either.
  */
 public final class PdfExport {
     private static final float PAGE_W = 792.0F;
     private static final float PAGE_H = 612.0F;
+    /** pictures are enlarged (pixel for pixel) until they're at least this many pixels across */
+    private static final int SHARP_SIZE = 1024;
 
     public static Path export(PortfolioStore store, Path out) throws IOException {
         List<byte[]> objects = new ArrayList<>();
@@ -85,9 +91,7 @@ public final class PdfExport {
         for (Object[] p : pending) {
             int id = (Integer) p[0];
             ImageData img = (ImageData) p[1];
-            byte[] packed = deflate(img.rgb);
-            objs[id] = stream("<< /Type /XObject /Subtype /Image /Width " + img.w + " /Height " + img.h
-                + " /ColorSpace /DeviceRGB /BitsPerComponent 8 /Filter /FlateDecode /Length " + packed.length + " >>", packed);
+            objs[id] = imageObject(img);
         }
 
         ByteArrayOutputStream pdf = new ByteArrayOutputStream();
@@ -109,25 +113,91 @@ public final class PdfExport {
         return out;
     }
 
-    private record ImageData(int w, int h, byte[] rgb) {
+    /** a picture ready for the PDF: its size, and its rows each with a PNG filter byte in front (Predictor 15) */
+    record ImageData(int w, int h, byte[] rows) {
+    }
+
+    /** the PDF image object for a picture */
+    static byte[] imageObject(ImageData img) throws IOException {
+        byte[] packed = deflate(img.rows);
+        return stream("<< /Type /XObject /Subtype /Image /Width " + img.w + " /Height " + img.h
+            + " /ColorSpace /DeviceRGB /BitsPerComponent 8 /Interpolate false /Filter /FlateDecode"
+            + " /DecodeParms << /Predictor 15 /Colors 3 /BitsPerComponent 8 /Columns " + img.w + " >> /Length " + packed.length + " >>", packed);
     }
 
     private static ImageData image(PortfolioStore store, PortfolioStore.Photo p) throws IOException {
-        try (NativeImage img = NativeImage.read(store.bytes(p))) {
-            int w = img.getWidth();
-            int h = img.getHeight();
-            byte[] rgb = new byte[w * h * 3];
-            int k = 0;
-            for (int y = 0; y < h; y++) {
-                for (int x = 0; x < w; x++) {
-                    int argb = img.getPixel(x, y);
-                    rgb[k++] = (byte) (argb >> 16);
-                    rgb[k++] = (byte) (argb >> 8);
-                    rgb[k++] = (byte) argb;
-                }
-            }
-            return new ImageData(w, h, rgb);
+        try (NativeImage img = PhotoCodec.decode(store.bytes(p))) {
+            return pack(img.getWidth(), img.getHeight(), img::getPixel);
         }
+    }
+
+    /** a picture of {@code sw} x {@code sh} pixels (ARGB from {@code pixel}), enlarged and filtered for the PDF */
+    static ImageData pack(int sw, int sh, java.util.function.IntBinaryOperator pixel) {
+        // how many times to enlarge it: each picture pixel becomes a k x k block
+        int k = Math.max(1, (SHARP_SIZE + Math.max(sw, sh) - 1) / Math.max(sw, sh));
+        int w = sw * k;
+        int h = sh * k;
+        int stride = w * 3;
+        byte[] rows = new byte[(stride + 1) * h];
+        byte[] line = new byte[stride];
+        byte[] above = new byte[stride];
+        for (int y = 0; y < h; y++) {
+            int sy = y / k;
+            for (int x = 0; x < w; x++) {
+                int argb = pixel.applyAsInt(x / k, sy);
+                line[x * 3] = (byte) (argb >> 16);
+                line[x * 3 + 1] = (byte) (argb >> 8);
+                line[x * 3 + 2] = (byte) argb;
+            }
+            filterRow(line, y == 0 ? null : above, rows, y * (stride + 1));
+            byte[] t = above;
+            above = line;
+            line = t;
+        }
+        return new ImageData(w, h, rows);
+    }
+
+    /**
+     * Writes one row with the PNG filter that should pack best (None, Sub, Up or Paeth, picked by the smallest sum of
+     * differences, the usual rule of thumb). Repeated rows from enlarging become all zeros with Up.
+     */
+    private static void filterRow(byte[] line, byte[] above, byte[] out, int at) {
+        int n = line.length;
+        int best = 0;
+        long bestScore = Long.MAX_VALUE;
+        for (int type = 0; type <= 4; type++) {
+            if (type == 3) continue; // Average rarely wins; skip it
+            long score = 0;
+            for (int i = 0; i < n && score < bestScore; i++) score += Math.abs((byte) filtered(type, line, above, i));
+            if (score < bestScore) {
+                bestScore = score;
+                best = type;
+            }
+        }
+        out[at] = (byte) best;
+        for (int i = 0; i < n; i++) out[at + 1 + i] = (byte) filtered(best, line, above, i);
+    }
+
+    /** a byte after PNG filter {@code type} (3 bytes per pixel) */
+    private static int filtered(int type, byte[] line, byte[] above, int i) {
+        int x = line[i] & 0xFF;
+        int a = i >= 3 ? line[i - 3] & 0xFF : 0;
+        int b = above != null ? above[i] & 0xFF : 0;
+        int c = above != null && i >= 3 ? above[i - 3] & 0xFF : 0;
+        return switch (type) {
+            case 1 -> x - a;
+            case 2 -> x - b;
+            case 4 -> x - paeth(a, b, c);
+            default -> x;
+        };
+    }
+
+    private static int paeth(int a, int b, int c) {
+        int p = a + b - c;
+        int pa = Math.abs(p - a);
+        int pb = Math.abs(p - b);
+        int pc = Math.abs(p - c);
+        return pa <= pb && pa <= pc ? a : pb <= pc ? b : c;
     }
 
     private static byte[] stream(String dict, byte[] data) {

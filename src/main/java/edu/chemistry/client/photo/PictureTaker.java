@@ -14,8 +14,10 @@ import org.jspecify.annotations.Nullable;
  * grabs the frame and adds it to the portfolio. Sneaking with the camera takes a close-up (the middle of the view).
  */
 public final class PictureTaker {
-    /** stored pictures are scaled down to this width */
-    private static final int WIDTH = 640;
+    /** pictures are square like a map, and at most this many pixels across (a multiple of the map's 128) */
+    private static final int MAX_SIZE = 1024;
+    /** a map's width in pixels */
+    private static final int MAP_PIXELS = 128;
     private static int stage;
     private static boolean closeUp;
     private static @Nullable Entity camera;
@@ -78,28 +80,32 @@ public final class PictureTaker {
 
     private static void save(NativeImage frame, boolean zoom) {
         try (frame) {
-            int sx = 0;
-            int sy = 0;
-            int sw = frame.getWidth();
-            int sh = frame.getHeight();
-            if (zoom) {
-                sx = sw / 4;
-                sy = sh / 4;
-                sw /= 2;
-                sh /= 2;
-            }
-            int w = Math.min(WIDTH, sw);
-            int h = Math.max(1, Math.round(sh * (w / (float) sw)));
-            NativeImage out = new NativeImage(w, h, false);
-            frame.resizeSubRectTo(sx, sy, sw, sh, out);
+            // the biggest square in the middle of the view (half as wide for a close-up), so the picture fills a map
+            int side = Math.min(frame.getWidth(), frame.getHeight());
+            if (zoom) side /= 2;
+            int sx = (frame.getWidth() - side) / 2;
+            int sy = (frame.getHeight() - side) / 2;
+            int size = pictureSize(side);
+            NativeImage out = new NativeImage(size, size, false);
+            frame.resizeSubRectTo(sx, sy, side, side, out);
             // the frame buffer's alpha isn't meaningful: make the picture fully opaque
-            for (int y = 0; y < h; y++) {
-                for (int x = 0; x < w; x++) out.setPixel(x, y, out.getPixel(x, y) | 0xFF000000);
+            for (int y = 0; y < size; y++) {
+                for (int x = 0; x < size; x++) out.setPixel(x, y, out.getPixel(x, y) | 0xFF000000);
             }
             PortfolioStore store = PortfolioStore.current();
             PortfolioStore.Photo p = store.add(out, "");
             if (p != null) PhotoToast.show(store.texture(p));
+            edu.chemistry.client.code.CodeBuilderClient.localEvent("CameraUsed");
         }
+    }
+
+    /**
+     * The picture's size for a square of the view this many pixels across: never bigger than the view (no blur from
+     * stretching it), at most {@link #MAX_SIZE}, and a whole number of map pixels so it lines up with a map's grid.
+     */
+    static int pictureSize(int side) {
+        int size = Math.min(side, MAX_SIZE);
+        return size >= MAP_PIXELS ? size - size % MAP_PIXELS : Math.max(1, size);
     }
 
     private PictureTaker() {
