@@ -71,9 +71,12 @@ public final class LocalEditorServer {
     public synchronized void start() throws IOException {
         if (this.server != null) return;
         IOException last = null;
+        // 127.0.0.1 itself, not the "loopback address": with java.net.preferIPv6Addresses set (Forge's launcher sets
+        // it), that one is ::1, and the browser, sent to 127.0.0.1, would find nothing there
+        InetAddress loopback = InetAddress.getByAddress("localhost", new byte[] {127, 0, 0, 1});
         for (int p = FIRST_PORT; p < FIRST_PORT + 20; p++) {
             try {
-                this.server = new ServerSocket(p, 50, InetAddress.getLoopbackAddress());
+                this.server = new ServerSocket(p, 50, loopback);
                 this.port = p;
                 break;
             } catch (IOException e) {

@@ -12,7 +12,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
-import net.minecraft.network.protocol.common.ClientboundCustomPayloadPacket;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerPlayer;
 import org.jspecify.annotations.Nullable;
@@ -153,7 +152,7 @@ public final class CodeConnection {
         JsonObject wrapper = new JsonObject();
         wrapper.addProperty("t", tab);
         wrapper.add("m", message);
-        player.connection.send(new ClientboundCustomPayloadPacket(new CodePayload(wrapper.toString())));
+        player.connection.send(edu.chemistry.network.EduNetwork.toClient.apply(new CodePayload(wrapper.toString())));
     }
 
     /** is any of this player's programs listening for this event? */

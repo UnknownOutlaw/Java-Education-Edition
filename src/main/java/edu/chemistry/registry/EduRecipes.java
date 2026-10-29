@@ -14,9 +14,23 @@ public final class EduRecipes {
     public static StationRecipe.Station COMPOUND;
     public static StationRecipe.Station LAB;
 
-    public static void init() {
+    /** the recipe types (the stations themselves are made here, and filled in by the next two steps) */
+    public static void initTypes() {
         COMPOUND = station("compound", () -> EduItems.COMPOUND_CREATOR);
         LAB = station("lab_table", () -> EduItems.LAB_TABLE);
+    }
+
+    public static void initSerializers() {
+        for (StationRecipe.Station s : new StationRecipe.Station[] {COMPOUND, LAB}) {
+            s.serializer = Registry.register(BuiltInRegistries.RECIPE_SERIALIZER, EduMod.id(s.name),
+                new RecipeSerializer<>(StationRecipe.codec(s), StationRecipe.streamCodec(s)));
+        }
+    }
+
+    public static void initCategories() {
+        for (StationRecipe.Station s : new StationRecipe.Station[] {COMPOUND, LAB}) {
+            s.category = Registry.register(BuiltInRegistries.RECIPE_BOOK_CATEGORY, EduMod.id(s.name), new RecipeBookCategory());
+        }
     }
 
     private static StationRecipe.Station station(String name, java.util.function.Supplier<net.minecraft.world.item.Item> block) {
@@ -31,9 +45,6 @@ public final class EduRecipes {
                     return id;
                 }
             });
-            s.serializer = Registry.register(BuiltInRegistries.RECIPE_SERIALIZER, EduMod.id(name),
-                new RecipeSerializer<>(StationRecipe.codec(s), StationRecipe.streamCodec(s)));
-            s.category = Registry.register(BuiltInRegistries.RECIPE_BOOK_CATEGORY, EduMod.id(name), new RecipeBookCategory());
             return s;
         } catch (ReflectiveOperationException e) {
             throw new IllegalStateException(e);

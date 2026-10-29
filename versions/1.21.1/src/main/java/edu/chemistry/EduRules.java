@@ -5,7 +5,6 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.common.ClientboundCustomPayloadPacket;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.item.Item;
@@ -64,7 +63,27 @@ public final class EduRules {
      * it is about.
      */
     public static Packet<?> syncPacket(String name, boolean value) {
-        return new ClientboundCustomPayloadPacket(new EduSyncPayload(name, value));
+        return edu.chemistry.network.EduNetwork.toClient.apply(new EduSyncPayload(name, value));
+    }
+
+    /** on the client: one of the values the server sends (see {@link #syncPacket(String, boolean)}) */
+    public static void clientSync(String name, boolean value) {
+        switch (name) {
+            case "education_features" -> setClientEnabled(value);
+            case "immutable_world" -> clientImmutable = value;
+            case "world_builder" -> EduPermissions.clientWorldBuilder = value;
+            default -> {
+            }
+        }
+    }
+
+    /** on the client: Education Edition is on or off in this world (shows or hides the Chemistry tab) */
+    public static void setClientEnabled(boolean enabled) {
+        if (clientEnabled == enabled) return;
+        clientEnabled = enabled;
+        onClientEnabledChanged.run();
+        // make the creative screen rebuild its tabs (and search) next time it looks
+        edu.chemistry.registry.EduTabs.refresh();
     }
 
     public static void tellDisabled(ServerPlayer player) {

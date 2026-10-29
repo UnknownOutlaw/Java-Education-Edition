@@ -9,6 +9,16 @@ base {
     archivesName = project.archives_base_name
 }
 
+// src/main is the code every loader shares; src/fabric has the Fabric entry points. (src/neoforge and src/forge hold
+// the NeoForge and Forge entry points, which this Fabric project doesn't build.)
+sourceSets {
+    main {
+        java {
+            srcDir 'src/fabric/java'
+        }
+    }
+}
+
 repositories {
     // JEI
     maven {
@@ -50,39 +60,7 @@ processResources {
     }
 }
 
-// Two jars, like the releases:
-//   education-edition-<version>-jei.jar  the full mod, with the JEI plugin
-//   education-edition-<version>.jar      the same mod without the JEI plugin
+// One jar, like the releases: education-edition-<version>-fabric.jar. Its JEI plugin only runs when JEI is installed.
 jar {
-    archiveClassifier = 'jei'
-}
-
-def noJeiModJson = tasks.register('noJeiModJson') {
-    def out = layout.buildDirectory.file('nojei/fabric.mod.json')
-    dependsOn tasks.named('processResources')
-    inputs.files(tasks.named('processResources'))
-    outputs.file(out)
-    doLast {
-        def source = new File(tasks.processResources.destinationDir, 'fabric.mod.json')
-        def json = new groovy.json.JsonSlurper().parse(source)
-        json.entrypoints.remove('jei_mod_plugin')
-        json.remove('suggests')
-        def file = out.get().asFile
-        file.parentFile.mkdirs()
-        file.text = groovy.json.JsonOutput.prettyPrint(groovy.json.JsonOutput.toJson(json))
-    }
-}
-
-def noJeiJar = tasks.register('noJeiJar', Jar) {
-    dependsOn noJeiModJson, tasks.named('classes')
-    archiveClassifier = ''
-    from(sourceSets.main.output) {
-        exclude 'edu/chemistry/compat/jei/**'
-        exclude 'fabric.mod.json'
-    }
-    from(layout.buildDirectory.dir('nojei'))
-}
-
-tasks.named('assemble') {
-    dependsOn noJeiJar
+    archiveClassifier = 'fabric'
 }

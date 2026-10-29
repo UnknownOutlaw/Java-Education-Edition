@@ -8,7 +8,8 @@ import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 
 /**
  * Code Builder messages between a player's game and the world's server, both ways: MakeCode's packets (JSON) wrapped
- * with the editor tab they belong to. CustomPayloadCodecMixin teaches the game's custom packet codec about it.
+ * with the editor tab they belong to. Each mod loader registers it its own way (on Fabric, CustomPayloadCodecMixin
+ * teaches the game's custom packet codec about it).
  */
 public record CodePayload(String json) implements CustomPacketPayload {
     public static final Type<CodePayload> TYPE = new Type<>(EduMod.id("code"));

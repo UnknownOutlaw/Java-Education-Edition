@@ -8,22 +8,22 @@
 
 <p align="center">
   <img src="https://img.shields.io/badge/Minecraft-26.1.2%20%7C%2026.3%20%7C%201.21.1-62B47A" alt="Minecraft 26.1.2 | 26.3 | 1.21.1">
-  <img src="https://img.shields.io/badge/Version-2.2.0-8A6FD1" alt="Version 2.2.0">
-  <img src="https://img.shields.io/badge/Loader-Fabric-DBD0B4" alt="Fabric">
+  <img src="https://img.shields.io/badge/Version-2.2.1-8A6FD1" alt="Version 2.2.1">
+  <img src="https://img.shields.io/badge/Loader-Fabric%20%7C%20NeoForge%20%7C%20Forge-DBD0B4" alt="Fabric | NeoForge | Forge">
   <img src="https://img.shields.io/badge/JEI-optional-4A90D9" alt="JEI optional">
   <img src="https://img.shields.io/badge/License-MIT-blue" alt="MIT License">
 </p>
 
 ---
 
-The chemistry and classroom content from Minecraft Education is some of the coolest stuff Minecraft has ever had, but it's been stuck on Bedrock, or behind a school login. This mod brings it over to Java on Fabric, kept as close to the original as possible.
+The chemistry and classroom content from Minecraft Education is some of the coolest stuff Minecraft has ever had, but it's been stuck on Bedrock, or behind a school login. This mod brings it over to Java on Fabric, NeoForge and Forge, kept as close to the original as possible.
 
-Version **2.2.0** runs on **Minecraft 26.1.2, 26.3 and 1.21.1**, and adds **the Agent** and **Code Builder**.
+Version **2.2.1** runs on **Minecraft 26.1.2, 26.3 and 1.21.1**, on **Fabric, NeoForge and Forge**: the same mod on every loader.
 
 ## Features
 
 ### The Agent
-Your own robot helper, just like in Education. Place it with the **Agent Spawn Egg** (it turns to face you) or use `/agent create`. Every player gets their own Agent, and right-clicking it opens its 27-slot inventory.
+Your own robot helper, just like in Education. Place it with the **Agent Spawn Egg** (it faces away from you) or use `/agent create`. Every player gets their own Agent, and right-clicking it opens its 27-slot inventory.
 
 - Control it with `/agent` commands: **move, turn, destroy, place, till, attack, collect, drop, dropall** and **transfer**. Ask it about the world with **detect, detectredstone, inspect, getitemcount, getitemdetail** and **getposition**.
 - It presses pressure plates, sets off tripwires and travels through nether portals, end portals and end gateways. `/agent tp` brings it back from anywhere, even another dimension.
@@ -98,21 +98,25 @@ Only the world's host can use World Builder commands, or owner-level operators o
 | `edu:immutable_world` | `false` | Only World Builders can build, except above Allow blocks |
 
 ## Installation
-1. Install [Fabric Loader](https://fabricmc.net/use/) for your Minecraft version.
-2. Put [Fabric API](https://modrinth.com/mod/fabric-api) in your `mods` folder.
-3. Download the jar for your Minecraft version and put it in your `mods` folder:
-   - `education-edition-<version>+<minecraft>.jar` works on its own.
-   - `education-edition-<version>+<minecraft>-jei.jar` also adds JEI support: element, compound and Lab Table recipes, and the medicines in JEI's brewing tab.
+1. Install a mod loader for your Minecraft version: [Fabric Loader](https://fabricmc.net/use/) with [Fabric API](https://modrinth.com/mod/fabric-api) in your `mods` folder, [NeoForge](https://neoforged.net/) or [Forge](https://files.minecraftforge.net/).
+2. Download the jar for your Minecraft version and loader from the [releases](../../releases) and put it in your `mods` folder:
 
-   `<minecraft>` is `26.1.2`, `26.3` or `1.21.1`. Install only one Education Edition jar. You don't need JEI to play.
+   | Minecraft | Fabric | NeoForge | Forge |
+   | --- | --- | --- | --- |
+   | 26.1.2 | `education-edition-<version>+26.1.2-fabric.jar` | `education-edition-<version>+26.1.2-neoforge.jar` | `education-edition-<version>+26.1.2-forge.jar` |
+   | 26.3 | `education-edition-<version>+26.3-fabric.jar` | `education-edition-<version>+26.3-neoforge.jar` | `education-edition-<version>+26.3-forge.jar` |
+   | 1.21.1 | `education-edition-<version>+1.21.1-fabric.jar` | `education-edition-<version>+1.21.1-neoforge.jar` | `education-edition-<version>+1.21.1-forge.jar` |
+
+   Install only one Education Edition jar. Every jar has JEI support built in: with [JEI](https://modrinth.com/mod/jei) installed, it shows the element, compound and Lab Table recipes, and the medicines in JEI's brewing tab. You don't need JEI to play.
 
 ## Requirements
-| | Minecraft 26.1.2 / 26.3 | Minecraft 1.21.1 |
-| --- | --- | --- |
-| Fabric Loader | 0.19.3 or newer | 0.16.0 or newer |
-| Fabric API | any | any for 1.21.1 |
-| Java | 25 | 21 |
-| JEI | optional | optional (a recent JEI 19 version) |
+| | Minecraft 26.1.2 | Minecraft 26.3 | Minecraft 1.21.1 |
+| --- | --- | --- | --- |
+| Fabric | Fabric Loader 0.19.3 or newer, and Fabric API | Fabric Loader 0.19.3 or newer, and Fabric API | Fabric Loader 0.16.0 or newer, and Fabric API |
+| NeoForge | 26.1.2 or newer | 26.3 or newer | 21.1 or newer |
+| Forge | 64 or newer | 66 or newer | 52 or newer |
+| Java | 25 | 25 | 21 |
+| JEI | optional | optional | optional (a recent JEI 19 version) |
 
 On 1.21.1, blocks and mobs added to Minecraft after that version can't be used from Code Builder, because they don't exist there.
 
@@ -123,22 +127,24 @@ You need **JDK 25** (Minecraft 26.1 runs on Java 25). Then, from the project fol
 ./gradlew build        # Windows: gradlew.bat build
 ```
 
-The jars end up in `build/libs`:
-- `education-edition-<version>+26.1.2.jar` is the mod without the JEI plugin.
-- `education-edition-<version>+26.1.2-jei.jar` is the same mod with the JEI plugin.
+The jar ends up in `build/libs` as `education-edition-<version>+26.1.2-fabric.jar`. The mod's version number is set in `gradle.properties`.
 
-The mod's version number is set in `gradle.properties`. The Gradle project builds the 26.1.2 version; the 26.3 and 1.21.1 sources are in `versions/` (see [versions/README.md](versions/README.md)).
+The Gradle project builds the Fabric jar for 26.1.2. Every other jar is built from the same code: `src/main` is shared by all three loaders, and `src/fabric`, `src/neoforge` and `src/forge` add each loader's entry points and metadata. The 26.3 and 1.21.1 sources are in `versions/`, laid out the same way. There's no Gradle setup for NeoForge or Forge in this repository yet; see [versions/README.md](versions/README.md).
 
 ### Project layout
 | Path | What's there |
 | --- | --- |
-| `src/main/java/edu/chemistry` | The mod's code: blocks, items, entities, screens and mixins |
+| `src/main/java/edu/chemistry` | The mod's code, shared by every loader: blocks, items, entities, screens and mixins |
 | `src/main/java/edu/chemistry/agent` | The Agent and its `/agent` commands |
 | `src/main/java/edu/chemistry/code` | Code Builder in the world: MakeCode's messages, Bedrock commands and game events |
 | `src/main/java/edu/chemistry/client/code` | Code Builder on your computer: the C key and the local server the MakeCode editor talks to |
-| `src/main/java/edu/chemistry/compat/jei` | The JEI plugin (left out of the plain jar) |
+| `src/main/java/edu/chemistry/network` | The mod's packets, handed to each loader's own networking |
+| `src/main/java/edu/chemistry/compat/jei` | The JEI plugin (it only runs when JEI is installed) |
 | `src/main/resources/assets/edu` | Textures, models, sounds, language and the guide book |
 | `src/main/resources/data/edu` | Recipes, loot tables, tags, advancements, villager trades and the village labs |
+| `src/fabric` | Fabric's entry points and its packet mixins |
+| `src/neoforge` | NeoForge's entry points and `neoforge.mods.toml` |
+| `src/forge` | Forge's entry points, `mods.toml` and `pack.mcmeta` |
 | `versions/26.3` | The same mod for Minecraft 26.3 |
 | `versions/1.21.1` | The same mod for Minecraft 1.21.1 |
 

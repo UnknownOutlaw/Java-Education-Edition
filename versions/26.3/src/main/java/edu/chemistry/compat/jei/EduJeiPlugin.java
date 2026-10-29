@@ -37,11 +37,13 @@ import net.minecraft.world.level.ItemLike;
 import org.jspecify.annotations.Nullable;
 
 /**
- * JEI support (only loaded when JEI is installed, through the "jei_mod_plugin" entrypoint): the Compound Creator, Lab
+ * JEI support (only loaded when JEI is installed: on Fabric through the "jei_mod_plugin" entrypoint, on NeoForge and
+ * Forge JEI finds the {@link mezz.jei.api.JeiPlugin} annotation): the Compound Creator, Lab
  * Table, Material Reducer and Element Constructor get their own recipe pages, the tables show up as their crafting
  * stations, items without a recipe get an info page, and JEI's item list keeps clear of the Education Edition
  * creative side tabs and the tables' recipe books.
  */
+@mezz.jei.api.JeiPlugin
 public class EduJeiPlugin implements IModPlugin {
     /** one recipe on a page: what goes in (with how many), what comes out, and an optional line of text */
     public record Reaction(List<ItemStack> inputs, List<ItemStack> outputs, @Nullable Component note) {

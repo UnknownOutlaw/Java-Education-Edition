@@ -13,9 +13,14 @@ public final class EduRecipes {
     public static StationRecipe.Station COMPOUND;
     public static StationRecipe.Station LAB;
 
-    public static void init() {
+    /** the recipe types (the stations themselves are made here, and get their serializers in the next step) */
+    public static void initTypes() {
         COMPOUND = station("compound", () -> EduItems.COMPOUND_CREATOR);
         LAB = station("lab_table", () -> EduItems.LAB_TABLE);
+    }
+
+    public static void initSerializers() {
+        for (StationRecipe.Station s : new StationRecipe.Station[] {COMPOUND, LAB}) s.serializer = serializer(s);
         edu.chemistry.recipe.BleachRecipe.SERIALIZER = Registry.register(BuiltInRegistries.RECIPE_SERIALIZER, EduMod.id("bleach_leather"),
             new net.minecraft.world.item.crafting.SimpleCraftingRecipeSerializer<>(edu.chemistry.recipe.BleachRecipe::new));
     }
@@ -32,23 +37,26 @@ public final class EduRecipes {
                     return id;
                 }
             });
-            com.mojang.serialization.MapCodec<StationRecipe> codec = StationRecipe.codec(s);
-            net.minecraft.network.codec.StreamCodec<net.minecraft.network.RegistryFriendlyByteBuf, StationRecipe> stream = StationRecipe.streamCodec(s);
-            s.serializer = Registry.register(BuiltInRegistries.RECIPE_SERIALIZER, EduMod.id(name), new RecipeSerializer<StationRecipe>() {
-                @Override
-                public com.mojang.serialization.MapCodec<StationRecipe> codec() {
-                    return codec;
-                }
-
-                @Override
-                public net.minecraft.network.codec.StreamCodec<net.minecraft.network.RegistryFriendlyByteBuf, StationRecipe> streamCodec() {
-                    return stream;
-                }
-            });
             return s;
         } catch (ReflectiveOperationException e) {
             throw new IllegalStateException(e);
         }
+    }
+
+    private static RecipeSerializer<StationRecipe> serializer(StationRecipe.Station s) {
+        com.mojang.serialization.MapCodec<StationRecipe> codec = StationRecipe.codec(s);
+        net.minecraft.network.codec.StreamCodec<net.minecraft.network.RegistryFriendlyByteBuf, StationRecipe> stream = StationRecipe.streamCodec(s);
+        return Registry.register(BuiltInRegistries.RECIPE_SERIALIZER, EduMod.id(s.name), new RecipeSerializer<StationRecipe>() {
+            @Override
+            public com.mojang.serialization.MapCodec<StationRecipe> codec() {
+                return codec;
+            }
+
+            @Override
+            public net.minecraft.network.codec.StreamCodec<net.minecraft.network.RegistryFriendlyByteBuf, StationRecipe> streamCodec() {
+                return stream;
+            }
+        });
     }
 
     private EduRecipes() {

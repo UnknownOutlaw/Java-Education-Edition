@@ -19,7 +19,6 @@
     "LeashFenceKnotMixin",
     "CommandSourceStackAccessor",
     "StructureTemplatePoolMixin",
-    "CustomPayloadCodecMixin",
     "LivingEntityDeathMixin",
     "ServerPlayerDeathMixin",
     "BowItemMixin",

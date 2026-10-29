@@ -15,6 +15,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Group;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
@@ -44,11 +45,23 @@ public abstract class ItemInHandRendererMixin {
         ci.cancel();
     }
 
-    /** a photo goes down the map's path (two hands, or one beside the other item) */
-    @Redirect(method = "renderArmWithItem", at = @At(value = "INVOKE",
+    /**
+     * a photo goes down the map's path (two hands, or one beside the other item). The game asks whether the item has a
+     * map id; NeoForge's and Forge's game asks whether it's a map item instead, so one of these two applies.
+     */
+    @Group(name = "edu$photoHeldLikeMap", min = 1)
+    @Redirect(method = "renderArmWithItem", require = 0, at = @At(value = "INVOKE",
         target = "Lnet/minecraft/world/item/ItemStack;has(Lnet/minecraft/core/component/DataComponentType;)Z"))
     private boolean edu$photoHeldLikeMap(ItemStack stack, DataComponentType<?> type) {
         return stack.has(type) || type == DataComponents.MAP_ID && PhotoRender.of(stack) != null;
+    }
+
+    @Group(name = "edu$photoHeldLikeMap", min = 1)
+    @Redirect(method = "renderArmWithItem", require = 0, at = @At(value = "CONSTANT", args = "classValue=net/minecraft/world/item/MapItem"))
+    private boolean edu$photoHeldLikeMapItem(Object item, Class<?> type, net.minecraft.client.player.AbstractClientPlayer player,
+                                              float frameInterp, float xRot, net.minecraft.world.InteractionHand hand, float attack,
+                                              ItemStack stack) {
+        return type.isInstance(item) || PhotoRender.of(stack) != null;
     }
 
     /** and where the map's paper and contents would be drawn, the photo's picture is */

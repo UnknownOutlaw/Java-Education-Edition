@@ -14,7 +14,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 /**
  * Adds the control tips key (H) and the Code Builder key (C) to the game's key bindings before they're loaded, so they
- * can be rebound and are saved.
+ * can be rebound and are saved. Done when the options are first loaded (in their constructor): Forge's Mixin can't hook
+ * into the middle of a constructor.
  */
 @Mixin(Options.class)
 public abstract class OptionsMixin {
@@ -23,8 +24,9 @@ public abstract class OptionsMixin {
     @Mutable
     public KeyMapping[] keyMappings;
 
-    @Inject(method = "<init>", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/Options;load()V"))
+    @Inject(method = "load()V", at = @At("HEAD"))
     private void edu$addControlTipsKey(CallbackInfo ci) {
+        if (Arrays.asList(this.keyMappings).contains(ControlTips.TOGGLE_KEY)) return;
         KeyMapping[] more = Arrays.copyOf(this.keyMappings, this.keyMappings.length + 2);
         more[this.keyMappings.length] = ControlTips.TOGGLE_KEY;
         more[this.keyMappings.length + 1] = edu.chemistry.client.code.CodeBuilderClient.KEY;

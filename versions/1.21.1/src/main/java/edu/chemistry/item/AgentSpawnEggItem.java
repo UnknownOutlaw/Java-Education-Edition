@@ -12,7 +12,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 
 /**
- * Education's Agent Spawn Egg: puts your Agent where you click, facing the way you face. Each player has one Agent, so
+ * Education's Agent Spawn Egg: puts your Agent where you click, facing away from you. Each player has one Agent, so
  * if you already have one it comes to that spot instead of a second one appearing.
  */
 public class AgentSpawnEggItem extends Item {
@@ -30,10 +30,11 @@ public class AgentSpawnEggItem extends Item {
         }
         BlockPos clicked = context.getClickedPos();
         BlockPos pos = level.getBlockState(clicked).getCollisionShape(level, clicked).isEmpty() ? clicked : clicked.relative(context.getClickedFace());
-        // like placing an armor stand, it turns to face whoever placed it
-        double dx = player.getX() - (pos.getX() + 0.5);
-        double dz = player.getZ() - (pos.getZ() + 0.5);
-        net.minecraft.core.Direction facing = dx * dx + dz * dz < 0.01 ? player.getDirection().getOpposite()
+        // it faces away from whoever placed it: along the line from the player to the spot (the player's own way when
+        // placed right where the player stands)
+        double dx = (pos.getX() + 0.5) - player.getX();
+        double dz = (pos.getZ() + 0.5) - player.getZ();
+        net.minecraft.core.Direction facing = dx * dx + dz * dz < 0.01 ? player.getDirection()
             : net.minecraft.core.Direction.fromYRot(net.minecraft.util.Mth.atan2(dz, dx) * net.minecraft.util.Mth.RAD_TO_DEG - 90.0);
         if (!Agents.summon(player, server, Vec3.atBottomCenterOf(pos), facing)) return InteractionResult.FAIL;
         context.getItemInHand().consume(1, player);

@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
   "id": "edu",
-  "version": "2.2.0+26.3",
+  "version": "2.2.1+26.3",
   "name": "Education Edition",
-  "description": "Minecraft Education features for Java Edition.\n\nChemistry: all 118 elements, compounds, and the Compound Creator, Material Reducer, Element Constructor and Lab Table, plus balloons, glow sticks, sparklers, colored torches, underwater TNT, ice bombs, bleach and medicines.\n\nClassroom: chalkboards, NPCs, Allow, Deny and Border blocks, World Builder, the Camera and Portfolio, and the Agent.\n\nCode Builder: press C to code with MakeCode for Minecraft in a web browser.\n\nTurn it on with the Education Edition option when creating a world, or with /gamerule edu:education_features true. The Chemistry Guide book explains it all in game.",
+  "description": "Minecraft Education features for Java Edition.\n\nRuns on Minecraft 26.1.2 (Fabric, NeoForge and Forge), 26.3 (Fabric, NeoForge and Forge) and 1.21.1 (Fabric, NeoForge and Forge). This file is for Minecraft 26.3 with Fabric.\n\nChemistry: all 118 elements, compounds, and the Compound Creator, Material Reducer, Element Constructor and Lab Table, plus balloons, glow sticks, sparklers, colored torches, underwater TNT, ice bombs, bleach and medicines.\n\nClassroom: chalkboards, NPCs, Allow, Deny and Border blocks, World Builder, the Camera and Portfolio, and the Agent.\n\nCode Builder: press C to code with MakeCode for Minecraft in a web browser.\n\nTurn it on with the Education Edition option when creating a world, or with /gamerule edu:education_features true. The Chemistry Guide book explains it all in game.",
   "authors": [
     "UnknownOutlaw"
   ],
@@ -12,10 +12,10 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "edu.chemistry.EduMod"
+      "edu.chemistry.fabric.EduFabric"
     ],
     "client": [
-      "edu.chemistry.client.EduClient"
+      "edu.chemistry.fabric.EduFabricClient"
     ],
     "jei_mod_plugin": [
       "edu.chemistry.compat.jei.EduJeiPlugin"
@@ -28,7 +28,8 @@
     "fabric-api": "*"
   },
   "mixins": [
-    "edu.mixins.json"
+    "edu.mixins.json",
+    "edu.fabric.mixins.json"
   ],
   "suggests": {
     "jei": "*"

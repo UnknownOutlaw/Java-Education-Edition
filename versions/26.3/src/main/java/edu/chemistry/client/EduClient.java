@@ -11,7 +11,6 @@ import edu.chemistry.util.Reflect;
 import java.lang.reflect.Method;
 import java.util.Map;
 import java.util.function.Function;
-import net.fabricmc.api.ClientModInitializer;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.gui.screens.Screen;
@@ -26,27 +25,82 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.MenuType;
 
-public class EduClient implements ClientModInitializer {
+/**
+ * The client's setup. Each mod loader puts the menu screens and renderers in place its own way (through
+ * {@link Screens} and {@link Renderers}: Fabric puts them straight into the game's own lists with {@link #VANILLA}),
+ * then runs {@link #init()}.
+ */
+public final class EduClient {
     @FunctionalInterface
-    interface ScreenFactory<M extends AbstractContainerMenu> {
+    public interface ScreenFactory<M extends AbstractContainerMenu> {
         Screen create(M menu, Inventory inventory, Component title);
     }
 
-    @Override
-    public void onInitializeClient() {
-        registerScreen(EduMenus.ELEMENT_CONSTRUCTOR, (ScreenFactory<ElementConstructorMenu>) ElementConstructorScreen::new);
-        registerScreen(EduMenus.COMPOUND_CREATOR, (ScreenFactory<CompoundCreatorMenu>) CompoundCreatorScreen::new);
-        registerScreen(EduMenus.LAB_TABLE, (ScreenFactory<LabTableMenu>) LabTableScreen::new);
-        registerScreen(EduMenus.MATERIAL_REDUCER, (ScreenFactory<MaterialReducerMenu>) MaterialReducerScreen::new);
+    /** puts a menu's screen in place */
+    public interface Screens {
+        <M extends AbstractContainerMenu> void screen(MenuType<M> type, ScreenFactory<M> factory);
+    }
 
-        registerRenderer(EduEntities.BALLOON, BalloonRenderer::new);
-        registerRenderer(EduEntities.ICE_BOMB, ThrownItemRenderer::new);
-        registerRenderer(EduEntities.UNDERWATER_TNT, TntRenderer::new);
+    /** puts an entity's or block entity's renderer in place */
+    public interface Renderers {
+        <T extends net.minecraft.world.entity.Entity> void entity(EntityType<? extends T> type, EntityRendererProvider<T> provider);
 
-        registerBlockEntityRenderer(edu.chemistry.registry.EduBlockEntities.CHALKBOARD, ChalkboardRenderer::new);
-        registerRenderer(EduEntities.NPC, NpcRenderer::new);
-        registerRenderer(EduEntities.TRIPOD_CAMERA, TripodCameraRenderer::new);
-        registerRenderer(EduEntities.AGENT, AgentRenderer::new);
+        <T extends net.minecraft.world.level.block.entity.BlockEntity, S extends net.minecraft.client.renderer.blockentity.state.BlockEntityRenderState>
+        void blockEntity(net.minecraft.world.level.block.entity.BlockEntityType<? extends T> type,
+                         net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider<T, S> provider);
+    }
+
+    /** the game's own lists (their register methods are private in vanilla, so by reflection) */
+    public static final Vanilla VANILLA = new Vanilla();
+
+    public static final class Vanilla implements Screens, Renderers {
+        private Vanilla() {
+        }
+
+        @Override
+        public <M extends AbstractContainerMenu> void screen(MenuType<M> type, ScreenFactory<M> factory) {
+            registerScreen(type, factory);
+        }
+
+        @Override
+        public <T extends net.minecraft.world.entity.Entity> void entity(EntityType<? extends T> type, EntityRendererProvider<T> provider) {
+            registerRenderer(type, provider);
+        }
+
+        @Override
+        public <T extends net.minecraft.world.level.block.entity.BlockEntity, S extends net.minecraft.client.renderer.blockentity.state.BlockEntityRenderState>
+        void blockEntity(net.minecraft.world.level.block.entity.BlockEntityType<? extends T> type,
+                         net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider<T, S> provider) {
+            registerBlockEntityRenderer(type, provider);
+        }
+    }
+
+    private EduClient() {
+    }
+
+    public static void registerScreens(Screens screens) {
+        screens.screen(EduMenus.ELEMENT_CONSTRUCTOR, (ScreenFactory<ElementConstructorMenu>) ElementConstructorScreen::new);
+        screens.screen(EduMenus.COMPOUND_CREATOR, (ScreenFactory<CompoundCreatorMenu>) CompoundCreatorScreen::new);
+        screens.screen(EduMenus.LAB_TABLE, (ScreenFactory<LabTableMenu>) LabTableScreen::new);
+        screens.screen(EduMenus.MATERIAL_REDUCER, (ScreenFactory<MaterialReducerMenu>) MaterialReducerScreen::new);
+    }
+
+    public static void registerRenderers(Renderers renderers) {
+        renderers.entity(EduEntities.BALLOON, BalloonRenderer::new);
+        renderers.entity(EduEntities.ICE_BOMB, ThrownItemRenderer::new);
+        renderers.entity(EduEntities.UNDERWATER_TNT, TntRenderer::new);
+
+        renderers.blockEntity(edu.chemistry.registry.EduBlockEntities.CHALKBOARD, ChalkboardRenderer::new);
+        renderers.entity(EduEntities.NPC, NpcRenderer::new);
+        renderers.entity(EduEntities.TRIPOD_CAMERA, TripodCameraRenderer::new);
+        renderers.entity(EduEntities.AGENT, AgentRenderer::new);
+    }
+
+    /** the rest of the client's setup: what the common code calls on the client */
+    public static void init() {
+        edu.chemistry.network.EduNetwork.clientHandler = payload -> {
+            if (payload instanceof edu.chemistry.code.CodePayload code) edu.chemistry.client.code.CodeBuilderClient.fromServer(code.json());
+        };
         edu.chemistry.photo.PhotoHooks.takePicture = (closeUp, from) -> edu.chemistry.client.photo.PictureTaker.request(closeUp, from);
         edu.chemistry.item.GuideBookItem.open = () -> Minecraft.getInstance().gui.setScreen(new GuideBookScreen());
         edu.chemistry.photo.PhotoHooks.openPortfolio = () -> Minecraft.getInstance().gui.setScreen(new edu.chemistry.client.photo.PortfolioScreen());

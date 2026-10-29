@@ -1,4 +1,4 @@
-package edu.chemistry.mixin;
+package edu.chemistry.fabric.mixin;
 
 import edu.chemistry.code.CodePayload;
 import net.minecraft.resources.Identifier;

@@ -15,7 +15,6 @@ import net.minecraft.network.chat.ClickEvent;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.HoverEvent;
 import net.minecraft.network.chat.Style;
-import net.minecraft.network.protocol.common.ServerboundCustomPayloadPacket;
 import net.minecraft.util.Util;
 
 /**
@@ -114,7 +113,7 @@ public final class CodeBuilderClient {
 
     private static void toServer(String json) {
         Minecraft mc = Minecraft.getInstance();
-        if (mc.getConnection() != null) mc.getConnection().send(new ServerboundCustomPayloadPacket(new CodePayload(json)));
+        if (mc.getConnection() != null) mc.getConnection().send(edu.chemistry.network.EduNetwork.toServer.apply(new CodePayload(json)));
     }
 
     // ---------------------------------------------------------------- world -> editor

@@ -14,7 +14,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 /**
  * Chalkboard edits travel in the sign-update packet (see {@link ChalkboardEdit}); this hands them to the chalkboard.
- * Code Builder packets and chat messages go to Code Builder.
+ * Chat messages go to Code Builder (its packets arrive the mod loader's way: on Fabric, through ServerPayloadMixin).
  */
 @Mixin(ServerGamePacketListenerImpl.class)
 public abstract class ServerGamePacketListenerMixin {
@@ -28,15 +28,6 @@ public abstract class ServerGamePacketListenerMixin {
             || edu.chemistry.photo.PhotoNetwork.handle(this.player, packet.getPos(), raw)) {
             ci.cancel();
         }
-    }
-
-    /** Code Builder packets from the player's MakeCode editor, handled on the server thread */
-    @Inject(method = "handleCustomPayload", at = @At("HEAD"), cancellable = true)
-    private void edu$codeBuilder(net.minecraft.network.protocol.common.ServerboundCustomPayloadPacket packet, CallbackInfo ci) {
-        if (!(packet.payload() instanceof edu.chemistry.code.CodePayload code)) return;
-        ServerPlayer player = this.player;
-        player.getServer().execute(() -> edu.chemistry.code.CodeConnection.receive(player, code.json()));
-        ci.cancel();
     }
 
     /** chat is how MakeCode's chat commands start */

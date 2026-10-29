@@ -26,9 +26,13 @@ public abstract class GameRendererMixin {
         PictureTaker.afterWorld();
     }
 
-    /** the shot is set up between frames (and taken here too on a frame without a world, so it never gets stuck) */
-    @Inject(method = "render", at = @At("TAIL"))
+    /**
+     * the shot is set up between frames (and taken here too on a frame without a world, so it never gets stuck). Not on
+     * a frame the game doesn't draw at all: that one returns early in the game, but not in NeoForge's or Forge's.
+     */
+    @Inject(method = "render", at = @At("RETURN"))
     private void edu$endFrame(DeltaTracker deltaTracker, boolean renderLevel, CallbackInfo ci) {
+        if (net.minecraft.client.Minecraft.getInstance().noRender) return;
         PictureTaker.afterFrame();
     }
 }

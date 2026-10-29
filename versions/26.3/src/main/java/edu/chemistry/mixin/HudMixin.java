@@ -12,8 +12,13 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 /** Draws the control tips, and the camera's flash and the little picture that pops up after taking one. */
 @Mixin(Hud.class)
 public abstract class HudMixin {
-    @Inject(method = "extractRenderState", at = @At("TAIL"))
+    /**
+     * after the HUD, which the game skips on the level loading screen (on every return rather than the last one, which
+     * NeoForge's HUD doesn't keep apart from the loading screen's)
+     */
+    @Inject(method = "extractRenderState", at = @At("RETURN"))
     private void edu$photoToast(GuiGraphicsExtractor graphics, DeltaTracker deltaTracker, CallbackInfo ci) {
+        if (net.minecraft.client.Minecraft.getInstance().gui.screen() instanceof net.minecraft.client.gui.screens.LevelLoadingScreen) return;
         edu.chemistry.client.ControlTips.render(graphics, graphics.guiWidth(), graphics.guiHeight());
         PhotoToast.render(graphics, graphics.guiWidth(), graphics.guiHeight());
     }

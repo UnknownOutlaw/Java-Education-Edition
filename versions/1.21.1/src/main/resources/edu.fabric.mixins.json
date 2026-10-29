@@ -1,0 +1,16 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "edu.chemistry.fabric.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "CustomPayloadCodecMixin",
+    "ServerPayloadMixin"
+  ],
+  "client": [
+    "ClientPayloadMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

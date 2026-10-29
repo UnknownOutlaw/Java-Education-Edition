@@ -26,9 +26,12 @@ public final class EduVillagers {
     private EduVillagers() {
     }
 
-    public static void init() {
+    /** the Lab Table as a job site */
+    public static void initJobSite() {
         Set<BlockState> states = ImmutableSet.copyOf(EduBlocks.LAB_TABLE.getStateDefinition().getPossibleStates());
         Holder<PoiType> poi = Registry.registerForHolder(BuiltInRegistries.POINT_OF_INTEREST_TYPE, CHEMIST_POI, new PoiType(states, 1, 1));
+        // NeoForge and Forge put a registered job site's blocks in the block state -> job site lookup themselves
+        if (EduMod.loader != EduMod.Loader.FABRIC) return;
         // vanilla's private registerBlockStates: puts each Lab Table state in the block state -> job site lookup
         try {
             java.lang.reflect.Method m = PoiTypes.class.getDeclaredMethod("registerBlockStates", Holder.class, Set.class);
@@ -37,7 +40,10 @@ public final class EduVillagers {
         } catch (ReflectiveOperationException e) {
             throw new IllegalStateException("couldn't make the Lab Table a job site", e);
         }
+    }
 
+    /** the Chemist (its job site is only named, so it doesn't matter which is registered first) */
+    public static void initProfession() {
         Int2ObjectMap<ResourceKey<TradeSet>> trades = new Int2ObjectOpenHashMap<>();
         for (int level = 1; level <= 5; level++) {
             trades.put(level, ResourceKey.create(Registries.TRADE_SET, EduMod.id("chemist/level_" + level)));

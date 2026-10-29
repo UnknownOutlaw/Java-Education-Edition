@@ -14,15 +14,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 /** Picks up the Education Edition rule from the server and shows or hides the Chemistry creative tab to match. */
 @Mixin(ClientPacketListener.class)
 public abstract class ClientPacketListenerMixin {
-    /** Code Builder packets from the server go to the MakeCode editor */
-    @Inject(method = "handleCustomPayload", at = @At("HEAD"), cancellable = true)
-    private void edu$codeBuilder(net.minecraft.network.protocol.common.custom.CustomPacketPayload payload, CallbackInfo ci) {
-        if (payload instanceof edu.chemistry.code.CodePayload code) {
-            edu.chemistry.client.code.CodeBuilderClient.fromServer(code.json());
-            ci.cancel();
-        }
-    }
-
     @Inject(method = "handleLogin", at = @At("HEAD"))
     private void edu$resetEducation(ClientboundLoginPacket packet, CallbackInfo ci) {
         edu$setEducation(false);
